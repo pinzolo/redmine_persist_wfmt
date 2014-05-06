@@ -1,4 +1,3 @@
-# coding: utf-8
 Redmine::Plugin.register :redmine_persist_wfmt do
   name 'Redmine persist wiki format plugin'
   author 'pinzolo'

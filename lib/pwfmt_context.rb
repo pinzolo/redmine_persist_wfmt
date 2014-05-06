@@ -1,4 +1,3 @@
-# coding: utf-8
 class PwfmtContext
   def self.format
     Thread.current[:pwfmt_format]

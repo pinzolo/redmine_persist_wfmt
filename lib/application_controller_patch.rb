@@ -1,4 +1,3 @@
-# coding: utf-8
 if require "application_controller"
   class ApplicationController < ActionController::Base
     if respond_to?(:before_action)

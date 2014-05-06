@@ -1,4 +1,3 @@
-# coding: utf-8
 module Redmine::WikiFormatting::Markdown::Helper
   include PwfmtHelper
 

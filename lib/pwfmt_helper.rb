@@ -1,4 +1,3 @@
-# coding: utf-8
 module PwfmtHelper
   def pwfmt_select_script(field_id, format)
     <<-_EOF_
