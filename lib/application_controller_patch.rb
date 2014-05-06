@@ -12,7 +12,10 @@ module ApplicationControllerPatch
   private
 
   def store_pwfmt_format
-    PwfmtContext.format = params[:pwfmt][:format] if params[:pwfmt]
+    if params[:pwfmt]
+      PwfmtContext.format = params[:pwfmt][:format]
+      PwfmtContext.field = params[:pwfmt][:field]
+    end
   end
 end
 

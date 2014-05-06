@@ -4,6 +4,7 @@ module PwfmtHelper
 (function() {
   var form = document.getElementById('#{field_id}').form;
   $(form).prepend('<input type="hidden" class="pwfmt-format" name="pwfmt[format]" value="#{format}">');
+  $(form).prepend('<input type="hidden" class="pwfmt-field" name="pwfmt[field]" value="#{field_id}">');
   var select = '<select name="pwfmt_select_format" class="pwfmt-select-format" data-target="#{field_id}">';
   var list = eval('#{Redmine::WikiFormatting.formats_for_select}');
   list.forEach(function(fmt, i) {
