@@ -8,5 +8,7 @@ Redmine::Plugin.register :redmine_persist_wfmt do
   author_url 'https://github.com/pinzolo'
 end
 
+require_relative 'lib/pwfmt_context'
 require_relative 'lib/textile_helper_patch'
 require_relative 'lib/markdown_helper_patch'
+require_relative 'lib/application_controller_patch'
