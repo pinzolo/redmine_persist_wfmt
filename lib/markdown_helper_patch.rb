@@ -1,5 +1,5 @@
 module Redmine::WikiFormatting::Markdown::Helper
-  include PwfmtHelper
+  include Pwfmt::Helper
 
   def wikitoolbar_for_with_pwfmt(field_id)
     wikitoolbar_for_without_pwfmt(field_id) + javascript_tag(pwfmt_select_script(field_id, 'markdown'))

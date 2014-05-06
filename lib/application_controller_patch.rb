@@ -1,4 +1,4 @@
-module ApplicationControllerPatch
+module Pwfmt::ApplicationControllerPatch
   extend ActiveSupport::Concern
 
   included do
@@ -13,12 +13,12 @@ module ApplicationControllerPatch
 
   def store_pwfmt_format
     if params[:pwfmt]
-      PwfmtContext.format = params[:pwfmt][:format]
-      PwfmtContext.field = params[:pwfmt][:field]
+      Pwfmt::Context.format = params[:pwfmt][:format]
+      Pwfmt::Context.field = params[:pwfmt][:field]
     end
   end
 end
 
 if require "application_controller"
-  ApplicationController.send(:include, ApplicationControllerPatch)
+  ApplicationController.send(:include, Pwfmt::ApplicationControllerPatch)
 end

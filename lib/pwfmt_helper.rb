@@ -1,4 +1,4 @@
-module PwfmtHelper
+module Pwfmt::Helper
   def pwfmt_select_script(field_id, format)
     <<-_EOF_
 (function() {
