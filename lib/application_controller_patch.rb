@@ -2,15 +2,15 @@ module Pwfmt::ApplicationControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_filter :store_pwfmt_format
+    before_filter :store_pwfmt_params
   end
 
   private
 
-  def store_pwfmt_format
+  def store_pwfmt_params
     if params[:pwfmt]
-      Pwfmt::Context.format = params[:pwfmt][:format]
-      Pwfmt::Context.field = params[:pwfmt][:field]
+      Pwfmt::Context.formats = params[:pwfmt][:formats]
+      Pwfmt::Context.fields = params[:pwfmt][:fields]
     end
   end
 end

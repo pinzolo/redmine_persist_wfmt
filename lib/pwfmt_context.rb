@@ -1,19 +1,19 @@
 module Pwfmt
   class Context
-    def self.field
-      Thread.current[:pwfmt_field]
+    def self.fields
+      Thread.current[:pwfmt_fields]
     end
 
-    def self.field=(field)
-      Thread.current[:pwfmt_field] = field
+    def self.fields=(field)
+      Thread.current[:pwfmt_fields] = field
     end
 
-    def self.format
-      Thread.current[:pwfmt_format]
+    def self.formats
+      Thread.current[:pwfmt_formats]
     end
 
-    def self.format=(format)
-      Thread.current[:pwfmt_format] = format
+    def self.formats=(formats)
+      Thread.current[:pwfmt_formats] = formats
     end
   end
 end
