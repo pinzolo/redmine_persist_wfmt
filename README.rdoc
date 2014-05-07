@@ -1,3 +1,0 @@
-= redmine_persist_wfmt
-
-Description goes here
