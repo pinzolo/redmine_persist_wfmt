@@ -2,11 +2,7 @@ module Pwfmt::ApplicationControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    if respond_to?(:before_action)
-      before_action :store_pwfmt_format
-    else
-      before_filter :store_pwfmt_format
-    end
+    before_filter :store_pwfmt_format
   end
 
   private
