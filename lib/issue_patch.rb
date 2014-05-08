@@ -24,6 +24,5 @@ module Pwfmt::IssuePatch
   end
 end
 
-if require 'issue'
-  Issue.send(:include, Pwfmt::IssuePatch)
-end
+require 'issue'
+Issue.send(:include, Pwfmt::IssuePatch)

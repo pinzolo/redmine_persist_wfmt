@@ -34,6 +34,5 @@ module Pwfmt::ProjectPatch
   end
 end
 
-if require 'project'
-  Project.send(:include, Pwfmt::ProjectPatch)
-end
+require 'project'
+Project.send(:include, Pwfmt::ProjectPatch)

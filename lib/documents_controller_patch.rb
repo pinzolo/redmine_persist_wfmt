@@ -21,8 +21,6 @@ module Pwfmt::DocumentsControllerPatch
   end
 end
 
-if require "documents_controller"
-  DocumentsController.send(:include, Pwfmt::DocumentsControllerPatch)
-end
-
+require "documents_controller"
+DocumentsController.send(:include, Pwfmt::DocumentsControllerPatch)
 

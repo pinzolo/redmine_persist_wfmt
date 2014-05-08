@@ -1,6 +1,9 @@
-require 'document'
-class Document
-  after_save :persist_wiki_format
+module Pwfmt::DocumentPatch
+  extend ActiveSupport::Concern
+
+  included do
+    after_save :persist_wiki_format
+  end
 
   def load_wiki_format!
     pwfmt = PwfmtFormat.where(target_id: self.id, field: 'document_description').first
@@ -20,3 +23,6 @@ class Document
     end
   end
 end
+
+require 'document'
+Document.send(:include, Pwfmt::DocumentPatch)

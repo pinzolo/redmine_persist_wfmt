@@ -30,7 +30,6 @@ module Pwfmt::JournalPatch
   end
 end
 
-if require 'journal'
-  Journal.send(:include, Pwfmt::JournalPatch)
-end
+require 'journal'
+Journal.send(:include, Pwfmt::JournalPatch)
 
