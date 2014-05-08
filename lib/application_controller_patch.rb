@@ -3,6 +3,7 @@ module Pwfmt::ApplicationControllerPatch
 
   included do
     before_filter :store_pwfmt_params
+    after_filter :clear_pwfmt_context
   end
 
   private
@@ -12,6 +13,10 @@ module Pwfmt::ApplicationControllerPatch
       Pwfmt::Context.formats = params[:pwfmt][:formats]
       Pwfmt::Context.fields = params[:pwfmt][:fields]
     end
+  end
+
+  def clear_pwfmt_context
+    Pwfmt::Context.clear
   end
 end
 

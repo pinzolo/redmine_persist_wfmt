@@ -23,5 +23,10 @@ module Pwfmt
         javascript_tag(script)
       end
     end
+
+    def view_journals_notes_form_after_notes(context)
+      journal = context[:journal]
+      Pwfmt::Context.reserved_format = journal.notes.pwfmt.format if journal && journal.notes.try(:pwfmt)
+    end
   end
 end

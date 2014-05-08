@@ -19,6 +19,9 @@ require_relative 'lib/wiki_formatting_patch'
 
 require_relative 'lib/project_patch'
 require_relative 'lib/projects_controller_patch'
-
 require_relative 'lib/issue_patch'
 require_relative 'lib/issues_controller_patch'
+require_relative 'lib/journal_patch'
+require_relative 'lib/journals_controller_patch'
+require_relative 'lib/journals_helper'
+

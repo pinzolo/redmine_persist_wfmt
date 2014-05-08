@@ -1,10 +1,11 @@
 module Pwfmt::Helper
   def pwfmt_select_script(field_id, format)
+    final_format = Pwfmt::Context.reserved_format || format
     <<-_EOF_
 (function(document) {
   var field = $('##{field_id}');
   if (!document.getElementById('pwfmt-format-#{field_id}')) {
-    field.after('<input type="hidden" id="pwfmt-format-#{field_id}" class="pwfmt-format" name="pwfmt[formats][#{field_id}]" value="#{format}">');
+    field.after('<input type="hidden" id="pwfmt-format-#{field_id}" class="pwfmt-format" name="pwfmt[formats][#{field_id}]" value="#{final_format}">');
   }
   if (!document.getElementById('pwfmt-field-#{field_id}')) {
     field.after('<input type="hidden" class="pwfmt-field-#{field_id}" name="pwfmt[fields][]" value="#{field_id}">');
@@ -20,7 +21,7 @@ module Pwfmt::Helper
   $('#pwfmt-select-#{field_id}').on('change', function() {
     $('#pwfmt-format-' + this.dataset.target).val($(this).val());
   });
-  $('#pwfmt-select-#{field_id}').val('#{format}');
+  $('#pwfmt-select-#{field_id}').val('#{final_format}').change();
 })(window.document);
     _EOF_
   end

@@ -16,4 +16,3 @@ if require "issues_controller"
   IssuesController.send(:include, Pwfmt::IssuesControllerPatch)
 end
 
-
