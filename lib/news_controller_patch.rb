@@ -9,7 +9,10 @@ module Pwfmt::NewsControllerPatch
   private
 
   def load_wiki_format
-    @news.load_wiki_format! if defined?(@news)
+    if defined?(@news)
+      @news.load_wiki_format!
+      @news.comments.each(&:load_wiki_format!)
+    end
   end
 
   def reserve_format

@@ -28,5 +28,6 @@ require_relative 'lib/document_patch'
 require_relative 'lib/documents_controller_patch'
 require_relative 'lib/news_patch'
 require_relative 'lib/news_controller_patch'
+require_relative 'lib/comment_patch'
 
 require_relative 'lib/application_helper_patch'
