@@ -24,4 +24,6 @@ require_relative 'lib/issues_controller_patch'
 require_relative 'lib/journal_patch'
 require_relative 'lib/journals_controller_patch'
 require_relative 'lib/journals_helper'
+require_relative 'lib/document_patch'
+require_relative 'lib/documents_controller_patch'
 
