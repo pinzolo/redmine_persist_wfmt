@@ -32,5 +32,8 @@ require_relative 'lib/comment_patch'
 require_relative 'lib/message_patch'
 require_relative 'lib/messages_controller_patch'
 require_relative 'lib/setting_patch'
+require_relative 'lib/wiki_content_patch'
+require_relative 'lib/wiki_content_version_patch'
+require_relative 'lib/wiki_controller_patch'
 
 require_relative 'lib/application_helper_patch'
