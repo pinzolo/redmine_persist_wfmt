@@ -22,5 +22,3 @@ end
 
 require 'news_controller'
 NewsController.send(:include, Pwfmt::NewsControllerPatch)
-
-

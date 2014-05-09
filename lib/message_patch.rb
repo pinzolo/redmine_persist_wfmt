@@ -26,4 +26,3 @@ end
 
 require 'message'
 Message.send(:include, Pwfmt::MessagePatch)
-

@@ -19,5 +19,3 @@ end
 
 require 'messages_controller'
 MessagesController.send(:include, Pwfmt::MessagesControllerPatch)
-
-

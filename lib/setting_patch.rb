@@ -29,4 +29,3 @@ end
 
 require 'setting'
 Setting.send(:include, Pwfmt::SettingPatch)
-

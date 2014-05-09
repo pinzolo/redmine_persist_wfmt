@@ -14,4 +14,3 @@ end
 
 require "projects_controller"
 ProjectsController.send(:include, Pwfmt::ProjectsControllerPatch)
-

@@ -32,4 +32,3 @@ end
 
 require 'journal'
 Journal.send(:include, Pwfmt::JournalPatch)
-

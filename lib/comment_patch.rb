@@ -26,5 +26,3 @@ end
 
 require 'comment'
 Comment.send(:include, Pwfmt::CommentPatch)
-
-

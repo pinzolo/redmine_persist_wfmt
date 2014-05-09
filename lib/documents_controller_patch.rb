@@ -23,4 +23,3 @@ end
 
 require 'documents_controller'
 DocumentsController.send(:include, Pwfmt::DocumentsControllerPatch)
-

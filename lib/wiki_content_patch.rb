@@ -26,4 +26,3 @@ end
 
 require 'wiki_content'
 WikiContent.send(:include, Pwfmt::WikiContentPatch)
-

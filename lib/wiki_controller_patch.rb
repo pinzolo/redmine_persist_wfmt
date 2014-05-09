@@ -16,4 +16,3 @@ end
 
 require 'wiki_controller'
 WikiController.send(:include, Pwfmt::WikiControllerPatch)
-

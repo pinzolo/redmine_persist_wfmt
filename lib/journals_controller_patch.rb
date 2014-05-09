@@ -19,4 +19,3 @@ end
 
 require 'journals_controller'
 JournalsController.send(:include, Pwfmt::JournalsControllerPatch)
-

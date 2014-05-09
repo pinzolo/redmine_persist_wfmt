@@ -26,4 +26,3 @@ end
 
 require 'news'
 News.send(:include, Pwfmt::NewsPatch)
-
