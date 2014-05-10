@@ -18,10 +18,10 @@ $ git clone https://gihub.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_p
 $ bundle install
 ```
 
-### 3. Execute migration and deploy assets:
+### 3. Execute migration:
 
 ```shell
-$ bundle exec rake redmine:plugins NAME=redmine_persist_wfmt
+$ bundle exec rake redmine:plugins:migrate NAME=redmine_persist_wfmt
 ```
 
 ### 4. Execute persist_all task:
@@ -31,7 +31,7 @@ $ bundle exec rake redmine:plugins NAME=redmine_persist_wfmt
 $ bundle exec rake persist_all FORMAT=textile
 ```
 
-### 5. Restart your redmine
+### 5. Restart your Redmine:
 
 ```shell
 # In case of using passenger
