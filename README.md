@@ -1,6 +1,14 @@
 # redmine_persist_wfmt
 
-redmine_persist_wfmt is a plugin for Redmine that persists wiki format.
+redmine_persist_wfmt is a plugin for Redmine that keep and valid viewing wiki format of various documents. (issue, document, wiki ...)
+
+## Feature senario
+
+1. Write document as Textile
+1. Change wiki formatting setting to Markdown
+1. Write document as Markdown
+1. Users can view new documents as translated into Markdown
+1. Users also can view old documents as translated into Textile
 
 ## Installation
 
