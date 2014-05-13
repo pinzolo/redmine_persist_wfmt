@@ -40,3 +40,6 @@ $ bundle exec rake persist_all FORMAT=textile RAILS_ENV=production
 $ touch tmp/restart.txt
 ```
 
+## Caution
+
+Preview and wiki toolbar are not changed by this plugin.
