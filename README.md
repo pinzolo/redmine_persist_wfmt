@@ -30,7 +30,7 @@ $ bundle exec rake redmine:plugins:migrate NAME=redmine_persist_wfmt RAILS_ENV=p
 
 ```shell
 # FORMAT is required and must be 'textile' or 'markdown'
-$ bundle exec rake persist_all FORMAT=textile RAILS_ENV=production
+$ bundle exec rake pwfmt:persist_all FORMAT=textile RAILS_ENV=production
 ```
 
 ### 4. Restart your Redmine:
