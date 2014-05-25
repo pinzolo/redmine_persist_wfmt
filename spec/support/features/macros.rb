@@ -32,5 +32,13 @@ module Features
     def format_option(select_box_id, format)
       find("##{select_box_id}").find("option[value=#{format}]")
     end
+
+    def create_project
+      visit new_project_path
+      select_format('#pwfmt-select-project_description', 'markdown')
+      find('#project_name').set 'test'
+      find('#project_identifier').set 'test'
+      find('input[name=commit]').click
+    end
   end
 end
