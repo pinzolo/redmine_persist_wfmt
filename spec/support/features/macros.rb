@@ -9,6 +9,10 @@ module Features
       find('input[name=login]').click
     end
 
+    def create_project
+      visit new_project_path
+    end
+
     def select_format(id, format)
       find(id).select(select_text_for(format))
     end
@@ -19,6 +23,14 @@ module Features
 
     def select_markdown(id)
       select_format(id, 'textile')
+    end
+
+    def html_by_id(id)
+      page.evaluate_script("document.getElementById('#{id}').innerHTML")
+    end
+
+    def format_option(select_box_id, format)
+      find("##{select_box_id}").find("option[value=#{format}]")
     end
   end
 end
