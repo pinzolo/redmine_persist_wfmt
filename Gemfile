@@ -7,5 +7,9 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'pry-rails'
-  gem 'pry-byebug'
+  if RUBY_VERSION >= '2.0.0'
+    gem 'pry-byebug'
+  else
+    gem 'pry-debugger'
+  end
 end
