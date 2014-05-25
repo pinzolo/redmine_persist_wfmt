@@ -39,5 +39,9 @@ module Features
     def select_text_for(format)
       Redmine::WikiFormatting.formats_for_select.find { |f| f.last == format }.first
     end
+
+    def format_option(select_box_id, format)
+      find("##{select_box_id}").find("option[value=#{format}]")
+    end
   end
 end
