@@ -19,6 +19,6 @@ if [ $TARGET = "redmine" ]; then
   bundle exec rake ci
 else
   # Execute plugin test by RSpec
-  bundle exec rspec plugins/redmine_bx/spec -c
+  bundle exec rspec plugins/redmine_persist_wfmt/spec -c
 fi
 
