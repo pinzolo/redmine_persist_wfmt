@@ -1,3 +1,12 @@
+require 'coveralls'
+require 'simplecov'
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter do |source_file|
+    !source_file.filename.include?("plugins/redmine_persist_wfmt") || !source_file.filename.end_with?(".rb")
+  end
+end
+
 require File.expand_path('spec/spec_helper') if File.exists?(File.expand_path('spec/spec_helper.rb'))
 
 require 'capybara/poltergeist'
