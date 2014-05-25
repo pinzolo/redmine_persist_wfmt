@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0
+  - 2.1
+env:
+  - TARGET=redmine REDMINE_VERSION=2.5.1
+  - TARGET=plugin REDMINE_VERSION=2.5.1
+before_install: sh travis/before_install.sh
+script: sh travis/exec_test.sh
