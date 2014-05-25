@@ -1,5 +1,11 @@
 #! /bin/sh
 
+if [ $TARGET = "redmine" ]; then
+  # Setup scms
+  sudo apt-get update -qq
+  sudo apt-get --no-install-recommends install bzr cvs git mercurial subversion
+fi
+
 PLUGIN_NAME="redmine_persist_wfmt"
 
 # Get & deploy Redmine
