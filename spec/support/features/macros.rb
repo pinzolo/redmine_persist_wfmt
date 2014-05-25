@@ -9,10 +9,6 @@ module Features
       find('input[name=login]').click
     end
 
-    def create_project
-      visit new_project_path
-    end
-
     def select_format(id, format)
       find(id).select(select_text_for(format))
     end
