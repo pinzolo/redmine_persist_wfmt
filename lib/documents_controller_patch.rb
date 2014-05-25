@@ -17,7 +17,7 @@ module Pwfmt::DocumentsControllerPatch
   end
 
   def reserve_format
-    Pwfmt::Context.reserved_format = @document.description.pwfmt.format if @document.description.try(:pwfmt)
+    Pwfmt::Context.reserve_format('document_description', @document.description)
   end
 end
 

@@ -16,7 +16,7 @@ module Pwfmt::NewsControllerPatch
   end
 
   def reserve_format
-    Pwfmt::Context.reserved_format = @news.description.pwfmt.format if @news.description.try(:pwfmt)
+    Pwfmt::Context.reserve_format('news_description', @news.description)
   end
 end
 

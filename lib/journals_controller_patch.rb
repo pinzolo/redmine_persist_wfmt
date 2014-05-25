@@ -13,7 +13,7 @@ module Pwfmt::JournalsControllerPatch
   end
 
   def reserve_format
-    Pwfmt::Context.reserved_format = @journal.notes.pwfmt.format if @journal.notes.try(:pwfmt)
+    Pwfmt::Context.reserve_format("journal_#{@journal.id}_notes", @journal.notes)
   end
 end
 

@@ -16,18 +16,23 @@ module Pwfmt
       Thread.current[:pwfmt_formats] = formats
     end
 
-    def self.reserved_format
-      Thread.current[:pwfmt_reserved_format]
+    def self.reserved_format(field)
+      if Thread.current[:pwfmt_reserved_format]
+        Thread.current[:pwfmt_reserved_format][field]
+      end
     end
 
-    def self.reserved_format=(format)
-      Thread.current[:pwfmt_reserved_format] = format
+    def self.reserve_format(field, text)
+      if text.try(:pwfmt)
+        Thread.current[:pwfmt_reserved_format] ||= {}
+        Thread.current[:pwfmt_reserved_format][field] = text.pwfmt.format
+      end
     end
 
     def self.clear
       self.fields = nil
       self.formats = nil
-      self.reserved_format = nil
+      Thread.current[:pwfmt_reserved_format] = nil
     end
   end
 end

@@ -13,7 +13,7 @@ module Pwfmt::MessagesControllerPatch
   end
 
   def reserve_format
-    Pwfmt::Context.reserved_format = @message.content.pwfmt.format if @message.content.try(:pwfmt)
+    Pwfmt::Context.reserve_format('message_content', @message.content)
   end
 end
 

@@ -35,10 +35,21 @@ module Features
 
     def create_project
       visit new_project_path
-      select_format('#pwfmt-select-project_description', 'markdown')
       find('#project_name').set 'test'
       find('#project_identifier').set 'test'
       find('input[name=commit]').click
+    end
+
+    def create_news
+      visit new_project_news_path(project_id: 'test')
+      find('#news_title').set 'test'
+      find('#news_description').set 'test'
+      find('input[name=commit]').click
+    end
+
+    def visit_news
+      news = News.all.first
+      visit news_path(news)
     end
   end
 end

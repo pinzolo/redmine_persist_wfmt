@@ -9,7 +9,7 @@ module Pwfmt::WikiControllerPatch
   def reserve_format
     if @page.content
       @page.content.load_wiki_format!
-      Pwfmt::Context.reserved_format = @page.content.text.pwfmt.format if @page.content.text.try(:pwfmt)
+      Pwfmt::Context.reserve_format('content_text', @page.content)
     end
   end
 end

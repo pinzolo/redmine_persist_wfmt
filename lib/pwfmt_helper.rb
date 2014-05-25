@@ -1,6 +1,6 @@
 module Pwfmt::Helper
   def pwfmt_select_script(field_id, format)
-    final_format = Pwfmt::Context.reserved_format || format
+    final_format = Pwfmt::Context.reserved_format(field_id) || format
     <<-_EOF_
 (function(document) {
   var field = $('##{field_id}');
