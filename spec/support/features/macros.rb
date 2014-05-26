@@ -25,6 +25,10 @@ module Features
       page.evaluate_script("document.getElementById('#{id}').innerHTML")
     end
 
+    def html_by_class(class_name)
+      page.evaluate_script("document.querySelector('.#{class_name}').innerHTML");
+    end
+
     def format_option(select_box_id, format)
       find("##{select_box_id}").find("option[value=#{format}]")
     end
@@ -53,6 +57,11 @@ module Features
       find('#board_name').set 'test'
       find('#board_description').set 'test'
       find('input[name=commit]').click
+    end
+
+    def open_issue_description_edit_area(issue)
+      all("a[href='#{edit_issue_path(issue)}']").first.click
+      find("#all_attributes").find("a[href='#']").click
     end
   end
 end
