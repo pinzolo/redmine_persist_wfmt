@@ -90,27 +90,27 @@ feature 'News description' do
           end
         end
       end
-    end
-    context 'when markdown and textile' do
-      background do
-        # markdown
-        visit new_project_news_path(project_id: 'test')
-        select_format('#pwfmt-select-news_description', 'markdown')
-        find('#news_title').set 'test'
-        find('#news_description').set raw_text
-        find('input[name=commit]').click
+      context 'when markdown and textile' do
+        background do
+          # markdown
+          visit new_project_news_path(project_id: 'test')
+          select_format('#pwfmt-select-news_description', 'markdown')
+          find('#news_title').set 'test'
+          find('#news_description').set raw_text
+          find('input[name=commit]').click
 
-        # textile
-        visit new_project_news_path(project_id: 'test')
-        select_format('#pwfmt-select-news_description', 'textile')
-        find('#news_title').set 'test'
-        find('#news_description').set raw_text
-        find('input[name=commit]').click
-      end
-      scenario 'view as markdown and view as textile in news list', js: true do
-        visit project_news_index_path('test')
-        expect(html_by_id('content')).to include markdown_text
-        expect(html_by_id('content')).to include textile_text
+          # textile
+          visit new_project_news_path(project_id: 'test')
+          select_format('#pwfmt-select-news_description', 'textile')
+          find('#news_title').set 'test'
+          find('#news_description').set raw_text
+          find('input[name=commit]').click
+        end
+        scenario 'view as markdown and view as textile in news list', js: true do
+          visit project_news_index_path('test')
+          expect(html_by_id('content')).to include markdown_text
+          expect(html_by_id('content')).to include textile_text
+        end
       end
     end
   end

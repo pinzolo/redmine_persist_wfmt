@@ -43,27 +43,27 @@ feature 'News comment' do
           expect(html_by_id('comments')).to include textile_text
         end
       end
-    end
-    context 'when markdown and textile' do
-      background do
-        # markdown
-        visit_news
-        find('a[href="#"]').click
-        select_format('#pwfmt-select-comment_comments', 'markdown')
-        find('#comment_comments').set raw_text
-        find('input[name=commit]').click
+      context 'when markdown and textile' do
+        background do
+          # markdown
+          visit_news
+          find('a[href="#"]').click
+          select_format('#pwfmt-select-comment_comments', 'markdown')
+          find('#comment_comments').set raw_text
+          find('input[name=commit]').click
 
-        # textile
-        visit_news
-        find('a[href="#"]').click
-        select_format('#pwfmt-select-comment_comments', 'textile')
-        find('#comment_comments').set raw_text
-        find('input[name=commit]').click
-      end
-      scenario 'view as markdown and view as textile in news#show', js: true do
-        visit_news
-        expect(html_by_id('comments')).to include markdown_text
-        expect(html_by_id('comments')).to include textile_text
+          # textile
+          visit_news
+          find('a[href="#"]').click
+          select_format('#pwfmt-select-comment_comments', 'textile')
+          find('#comment_comments').set raw_text
+          find('input[name=commit]').click
+        end
+        scenario 'view as markdown and view as textile in news#show', js: true do
+          visit_news
+          expect(html_by_id('comments')).to include markdown_text
+          expect(html_by_id('comments')).to include textile_text
+        end
       end
     end
   end

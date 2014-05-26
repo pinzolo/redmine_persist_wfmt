@@ -28,6 +28,10 @@ feature 'Project description' do
           visit project_path('test')
           expect(html_by_id('content')).to include markdown_text
         end
+        scenario 'view short description as markdown', js: true do
+          visit home_path
+          expect(html_by_id('content')).to include markdown_text
+        end
         scenario 'selected item of select box is markdown', js: true do
           visit settings_project_path('test')
           expect(format_option('pwfmt-select-project_description', 'markdown').selected?).to be_true
@@ -40,6 +44,10 @@ feature 'Project description' do
           end
           scenario 'view as textile', js: true do
             visit project_path('test')
+            expect(html_by_id('content')).to include textile_text
+          end
+          scenario 'view short description as textile', js: true do
+            visit home_path
             expect(html_by_id('content')).to include textile_text
           end
           scenario 'selected item of select box is textile', js: true do
@@ -61,6 +69,10 @@ feature 'Project description' do
           visit project_path('test')
           expect(html_by_id('content')).to include textile_text
         end
+        scenario 'view short description as textile', js: true do
+          visit home_path
+          expect(html_by_id('content')).to include textile_text
+        end
         scenario 'selected item of select box is textile', js: true do
           visit settings_project_path('test')
           expect(format_option('pwfmt-select-project_description', 'textile').selected?).to be_true
@@ -75,10 +87,38 @@ feature 'Project description' do
             visit project_path('test')
             expect(html_by_id('content')).to include markdown_text
           end
+          scenario 'view short description as markdown', js: true do
+            visit home_path
+            expect(html_by_id('content')).to include markdown_text
+          end
           scenario 'selected item of select box is markdown', js: true do
             visit settings_project_path('test')
             expect(format_option('pwfmt-select-project_description', 'markdown').selected?).to be_true
           end
+        end
+      end
+      context 'when markdown and textile' do
+        background do
+          # markdown
+          visit new_project_path
+          select_format('#pwfmt-select-project_description', 'markdown')
+          find('#project_name').set 'test1'
+          find('#project_description').set raw_text
+          find('#project_identifier').set 'test1'
+          find('input[name=commit]').click
+
+          # textile
+          visit new_project_path
+          select_format('#pwfmt-select-project_description', 'textile')
+          find('#project_name').set 'test2'
+          find('#project_description').set raw_text
+          find('#project_identifier').set 'test2'
+          find('input[name=commit]').click
+        end
+        scenario 'view as markdown and view as textile in recent projects', js: true do
+          visit home_path
+          expect(html_by_id('content')).to include markdown_text
+          expect(html_by_id('content')).to include textile_text
         end
       end
     end

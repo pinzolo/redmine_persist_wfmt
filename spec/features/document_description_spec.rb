@@ -90,27 +90,27 @@ feature 'Document description' do
           end
         end
       end
-    end
-    context 'when markdown and textile' do
-      background do
-        # markdown
-        visit new_project_document_path(project_id: 'test')
-        select_format('#pwfmt-select-document_description', 'markdown')
-        find('#document_title').set 'test'
-        find('#document_description').set raw_text
-        find('input[name=commit]').click
+      context 'when markdown and textile' do
+        background do
+          # markdown
+          visit new_project_document_path(project_id: 'test')
+          select_format('#pwfmt-select-document_description', 'markdown')
+          find('#document_title').set 'test'
+          find('#document_description').set raw_text
+          find('input[name=commit]').click
 
-        # textile
-        visit new_project_document_path(project_id: 'test')
-        select_format('#pwfmt-select-document_description', 'textile')
-        find('#document_title').set 'test'
-        find('#document_description').set raw_text
-        find('input[name=commit]').click
-      end
-      scenario 'view as markdown and view as textile in document list', js: true do
-        visit project_documents_path('test')
-        expect(html_by_id('content')).to include markdown_text
-        expect(html_by_id('content')).to include textile_text
+          # textile
+          visit new_project_document_path(project_id: 'test')
+          select_format('#pwfmt-select-document_description', 'textile')
+          find('#document_title').set 'test'
+          find('#document_description').set raw_text
+          find('input[name=commit]').click
+        end
+        scenario 'view as markdown and view as textile in document list', js: true do
+          visit project_documents_path('test')
+          expect(html_by_id('content')).to include markdown_text
+          expect(html_by_id('content')).to include textile_text
+        end
       end
     end
   end
