@@ -47,5 +47,12 @@ module Features
       news = News.all.first
       visit news_path(news)
     end
+
+    def create_forum
+      visit new_project_board_path('test')
+      find('#board_name').set 'test'
+      find('#board_description').set 'test'
+      find('input[name=commit]').click
+    end
   end
 end
