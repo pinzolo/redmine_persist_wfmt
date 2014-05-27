@@ -16,7 +16,7 @@ require File.expand_path('spec/spec_helper') if File.exists?(File.expand_path('s
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, timeout: 600)
+  Capybara::Poltergeist::Driver.new(app, timeout: 120)
 end
 
 Dir[File.expand_path("#{File.dirname(__FILE__)}/support/**/*.rb")].each { |f| require f }
