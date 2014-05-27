@@ -18,7 +18,7 @@ describe PwfmtFormat do
       it 'inserted' do
         expect { PwfmtFormat.persist(doc, field, 'textile') }.to change { PwfmtFormat.count }.by(1)
       end
-      describe 'values cofirmation' do
+      describe 'attribute values' do
         before do
           PwfmtFormat.persist(doc, field, 'textile')
         end
@@ -35,7 +35,7 @@ describe PwfmtFormat do
       it 'not inserted' do
         expect { PwfmtFormat.persist(doc, field, 'textile') }.not_to change { PwfmtFormat.count }
       end
-      describe 'values cofirmation' do
+      describe 'attribute values' do
         before do
           PwfmtFormat.persist(doc, field, 'textile')
         end
