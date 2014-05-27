@@ -49,6 +49,10 @@ feature 'Wiki content', js: true do
             find("a[accesskey='e']").click
             expect(format_option('pwfmt-select-content_text', 'textile').selected?).to be_true
           end
+          scenario 'view old version as markdown' do
+            visit '/projects/test/wiki/Wiki/1'
+            expect(html_by_id('content')).to include markdown_text
+          end
         end
       end
       context 'when save as textile' do
@@ -83,6 +87,10 @@ feature 'Wiki content', js: true do
             visit '/projects/test/wiki'
             find("a[accesskey='e']").click
             expect(format_option('pwfmt-select-content_text', 'markdown').selected?).to be_true
+          end
+          scenario 'view old version as textile' do
+            visit '/projects/test/wiki/Wiki/1'
+            expect(html_by_id('content')).to include textile_text
           end
         end
       end
