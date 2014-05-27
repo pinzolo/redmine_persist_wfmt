@@ -30,6 +30,6 @@ RSpec.configure do |config|
   config.before(:each)  { DatabaseCleaner.start }
   config.after(:each) do
     DatabaseCleaner.clean
-    page.driver.reset!
+    page.driver.reset! if defined?(page)
   end
 end
