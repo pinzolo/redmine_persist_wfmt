@@ -67,7 +67,7 @@ module Features
     def visit_issue(issue)
       visit issue_path(issue)
     rescue Capybara::Poltergeist::TimeoutError
-      pending
+      pending("Timeout at '#{issue_path(issue)}'")
     end
   end
 end
