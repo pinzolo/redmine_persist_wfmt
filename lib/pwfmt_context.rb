@@ -1,13 +1,5 @@
 module Pwfmt
   class Context
-    def self.fields
-      Thread.current[:pwfmt_fields]
-    end
-
-    def self.fields=(field)
-      Thread.current[:pwfmt_fields] = field
-    end
-
     def self.formats
       Thread.current[:pwfmt_formats]
     end
@@ -30,7 +22,6 @@ module Pwfmt
     end
 
     def self.clear
-      self.fields = nil
       self.formats = nil
       Thread.current[:pwfmt_reserved_format] = nil
     end

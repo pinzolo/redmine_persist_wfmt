@@ -7,9 +7,6 @@ module Pwfmt::Helper
   if (!document.getElementById('pwfmt-format-#{field_id}')) {
     field.after('<input type="hidden" id="pwfmt-format-#{field_id}" class="pwfmt-format" name="pwfmt[formats][#{field_id}]" value="#{final_format}">');
   }
-  if (!document.getElementById('pwfmt-field-#{field_id}')) {
-    field.after('<input type="hidden" class="pwfmt-field-#{field_id}" name="pwfmt[fields][]" value="#{field_id}">');
-  }
   if (!document.getElementById('pwfmt-select-#{field_id}')) {
     var select = '<select id="pwfmt-select-#{field_id}" name="pwfmt_select_format" class="pwfmt-select" data-target="#{field_id}">';
     var list = eval('#{Redmine::WikiFormatting.formats_for_select}');

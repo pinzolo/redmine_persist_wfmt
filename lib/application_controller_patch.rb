@@ -9,10 +9,7 @@ module Pwfmt::ApplicationControllerPatch
   private
 
   def store_pwfmt_params
-    if params[:pwfmt]
-      Pwfmt::Context.formats = params[:pwfmt][:formats]
-      Pwfmt::Context.fields = params[:pwfmt][:fields]
-    end
+    Pwfmt::Context.formats = params[:pwfmt][:formats] if params[:pwfmt]
   end
 
   def clear_pwfmt_context
