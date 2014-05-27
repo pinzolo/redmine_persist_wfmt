@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-feature 'News description' do
+feature 'News description', js: true do
   background do
     load_default_data
     sign_in_as_admin
@@ -12,7 +12,7 @@ feature 'News description' do
       background do
         Setting.text_formatting = format
       end
-      scenario "selected item of select box is #{format} when first visited", js: true do
+      scenario "selected item of select box is #{format} when first visited" do
         visit new_project_news_path(project_id: 'test')
         expect(format_option('pwfmt-select-news_description', format).selected?).to be_true
       end
@@ -24,12 +24,12 @@ feature 'News description' do
           find('#news_description').set raw_text
           find('input[name=commit]').click
         end
-        scenario 'view as markdown', js: true do
+        scenario 'view as markdown' do
           news = News.all.first
           visit news_path(news)
           expect(html_by_id('content')).to include markdown_text
         end
-        scenario 'selected item of select box is markdown', js: true do
+        scenario 'selected item of select box is markdown' do
           news = News.all.first
           visit edit_news_path(news)
           expect(format_option('pwfmt-select-news_description', 'markdown').selected?).to be_true
@@ -41,12 +41,12 @@ feature 'News description' do
             select_format('#pwfmt-select-news_description', 'textile')
             find('input[name=commit]').click
           end
-          scenario 'view as textile', js: true do
+          scenario 'view as textile' do
             news = News.all.first
             visit news_path(news)
             expect(html_by_id('content')).to include textile_text
           end
-          scenario 'selected item of select box is textile', js: true do
+          scenario 'selected item of select box is textile' do
             news = News.all.first
             visit edit_news_path(news)
             expect(format_option('pwfmt-select-news_description', 'textile').selected?).to be_true
@@ -61,12 +61,12 @@ feature 'News description' do
           find('#news_description').set raw_text
           find('input[name=commit]').click
         end
-        scenario 'view as textile', js: true do
+        scenario 'view as textile' do
           news = News.all.first
           visit news_path(news)
           expect(html_by_id('content')).to include textile_text
         end
-        scenario 'selected item of select box is textile', js: true do
+        scenario 'selected item of select box is textile' do
           news = News.all.first
           visit edit_news_path(news)
           expect(format_option('pwfmt-select-news_description', 'textile').selected?).to be_true
@@ -78,12 +78,12 @@ feature 'News description' do
             select_format('#pwfmt-select-news_description', 'markdown')
             find('input[name=commit]').click
           end
-          scenario 'view as markdown', js: true do
+          scenario 'view as markdown' do
             news = News.all.first
             visit news_path(news)
             expect(html_by_id('content')).to include markdown_text
           end
-          scenario 'selected item of select box is markdown', js: true do
+          scenario 'selected item of select box is markdown' do
             news = News.all.first
             visit edit_news_path(news)
             expect(format_option('pwfmt-select-news_description', 'markdown').selected?).to be_true
@@ -106,7 +106,7 @@ feature 'News description' do
           find('#news_description').set raw_text
           find('input[name=commit]').click
         end
-        scenario 'view as markdown and view as textile in news list', js: true do
+        scenario 'view as markdown and view as textile in news list' do
           visit project_news_index_path('test')
           expect(html_by_id('content')).to include markdown_text
           expect(html_by_id('content')).to include textile_text

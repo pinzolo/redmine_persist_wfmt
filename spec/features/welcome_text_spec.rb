@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-feature 'Welcome text' do
+feature 'Welcome text', js: true do
   background do
     load_default_data
     sign_in_as_admin
@@ -11,7 +11,7 @@ feature 'Welcome text' do
       background do
         Setting.text_formatting = format
       end
-      scenario "selected item of select box is #{format} when first visited", js: true do
+      scenario "selected item of select box is #{format} when first visited" do
         visit settings_path
         expect(format_option('pwfmt-select-settings_welcome_text', format).selected?).to be_true
       end
@@ -22,11 +22,11 @@ feature 'Welcome text' do
           find('#settings_welcome_text').set raw_text
           find('input[name=commit]').click
         end
-        scenario 'view as markdown', js: true do
+        scenario 'view as markdown' do
           visit home_path
           expect(html_by_id('content')).to include markdown_text
         end
-        scenario 'selected item of select box is markdown', js: true do
+        scenario 'selected item of select box is markdown' do
           visit settings_path
           expect(format_option('pwfmt-select-settings_welcome_text', 'markdown').selected?).to be_true
         end
@@ -36,11 +36,11 @@ feature 'Welcome text' do
             select_format('#pwfmt-select-settings_welcome_text', 'textile')
             find('input[name=commit]').click
           end
-          scenario 'view as textile', js: true do
+          scenario 'view as textile' do
             visit home_path
             expect(html_by_id('content')).to include textile_text
           end
-          scenario 'selected item of select box is textile', js: true do
+          scenario 'selected item of select box is textile' do
             visit settings_path
             expect(format_option('pwfmt-select-settings_welcome_text', 'textile').selected?).to be_true
           end
@@ -53,11 +53,11 @@ feature 'Welcome text' do
           find('#settings_welcome_text').set raw_text
           find('input[name=commit]').click
         end
-        scenario 'view as textile', js: true do
+        scenario 'view as textile' do
           visit home_path
           expect(html_by_id('content')).to include textile_text
         end
-        scenario 'selected item of select box is textile', js: true do
+        scenario 'selected item of select box is textile' do
           visit settings_path
           expect(format_option('pwfmt-select-settings_welcome_text', 'textile').selected?).to be_true
         end
@@ -67,11 +67,11 @@ feature 'Welcome text' do
             select_format('#pwfmt-select-settings_welcome_text', 'markdown')
             find('input[name=commit]').click
           end
-          scenario 'view as markdown', js: true do
+          scenario 'view as markdown' do
             visit home_path
             expect(html_by_id('content')).to include markdown_text
           end
-          scenario 'selected item of select box is markdown', js: true do
+          scenario 'selected item of select box is markdown' do
             visit settings_path
             expect(format_option('pwfmt-select-settings_welcome_text', 'markdown').selected?).to be_true
           end
