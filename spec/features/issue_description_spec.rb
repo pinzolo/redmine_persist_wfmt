@@ -26,19 +26,19 @@ feature 'Issue description', js: true do
         end
         scenario 'view as markdown' do
           issue = Issue.all.first
-          visit issue_path(issue)
+          visit_issue(issue)
           expect(html_by_class('description')).to include markdown_text
         end
         scenario 'selected item of select box is markdown' do
           issue = Issue.all.first
-          visit issue_path(issue)
+          visit_issue(issue)
           open_issue_description_edit_area(issue)
           expect(format_option('pwfmt-select-issue_description', 'markdown').selected?).to be_true
         end
         context 'when change format to textile' do
           background do
             issue = Issue.all.first
-            visit issue_path(issue)
+            visit_issue(issue)
             open_issue_description_edit_area(issue)
             select_format('#pwfmt-select-issue_description', 'textile')
             find('#issue_description').set raw_text
@@ -46,12 +46,12 @@ feature 'Issue description', js: true do
           end
           scenario 'view as textile' do
             issue = Issue.all.first
-            visit issue_path(issue)
+            visit_issue(issue)
             expect(html_by_class('description')).to include textile_text
           end
           scenario 'selected item of select box is textile' do
             issue = Issue.all.first
-            visit issue_path(issue)
+            visit_issue(issue)
             open_issue_description_edit_area(issue)
             expect(format_option('pwfmt-select-issue_description', 'textile').selected?).to be_true
           end
@@ -67,19 +67,19 @@ feature 'Issue description', js: true do
         end
         scenario 'view as textile' do
           issue = Issue.all.first
-          visit issue_path(issue)
+          visit_issue(issue)
           expect(html_by_class('description')).to include textile_text
         end
         scenario 'selected item of select box is textile' do
           issue = Issue.all.first
-          visit issue_path(issue)
+          visit_issue(issue)
           open_issue_description_edit_area(issue)
           expect(format_option('pwfmt-select-issue_description', 'textile').selected?).to be_true
         end
         context 'when change format to markdown' do
           background do
             issue = Issue.all.first
-            visit issue_path(issue)
+            visit_issue(issue)
             open_issue_description_edit_area(issue)
             select_format('#pwfmt-select-issue_description', 'markdown')
             find('#issue_description').set raw_text
@@ -87,12 +87,12 @@ feature 'Issue description', js: true do
           end
           scenario 'view as markdown' do
             issue = Issue.all.first
-            visit issue_path(issue)
+            visit_issue(issue)
             expect(html_by_class('description')).to include markdown_text
           end
           scenario 'selected item of select box is markdown' do
             issue = Issue.all.first
-            visit issue_path(issue)
+            visit_issue(issue)
             open_issue_description_edit_area(issue)
             expect(format_option('pwfmt-select-issue_description', 'markdown').selected?).to be_true
           end

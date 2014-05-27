@@ -63,5 +63,11 @@ module Features
       all("a[href='#{edit_issue_path(issue)}']").first.click
       find("#all_attributes").find("a[href='#']").click
     end
+
+    def visit_issue(issue)
+      visit issue_path(issue)
+    rescue Capybara::Poltergeist::TimeoutError
+      pending
+    end
   end
 end

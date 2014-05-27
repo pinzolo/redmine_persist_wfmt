@@ -23,31 +23,31 @@ feature 'Journal notes', js: true do
             @issue = Issue.all.first
           end
           scenario "selected item of select box is #{format} when first visited" do
-            visit issue_path(@issue)
+            visit_issue(@issue)
             all("a[href='#{edit_issue_path(@issue)}']").first.click
             expect(format_option('pwfmt-select-issue_notes', format).selected?).to be_true
           end
           context 'when save as markdown' do
             background do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               all("a[href='#{edit_issue_path(@issue)}']").first.click
               select_format('#pwfmt-select-issue_notes', 'markdown')
               find('#issue_notes').set raw_text
               find('#issue-form').find('input[name=commit]').click
             end
             scenario 'view as markdown' do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               expect(html_by_id("journal-#{@issue.journals.first.id}-notes")).to include markdown_text
             end
             scenario 'selected item of select box is markdown' do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               journal_id = @issue.journals.first.id
               find("#journal-#{journal_id}-notes").find("a[href='#']").click
               expect(format_option("pwfmt-select-journal_#{journal_id}_notes", 'markdown').selected?).to be_true
             end
             context 'when change format to textile' do
               background do
-                visit issue_path(@issue)
+                visit_issue(@issue)
                 journal_id = @issue.journals.first.id
                 find("#journal-#{journal_id}-notes").find("a[href='#']").click
                 select_format("#pwfmt-select-journal_#{journal_id}_notes", 'textile')
@@ -55,11 +55,11 @@ feature 'Journal notes', js: true do
                 find("#journal-#{journal_id}-form").find('input[name=commit]').click
               end
               scenario 'view as textile' do
-                visit issue_path(@issue)
+                visit_issue(@issue)
                 expect(html_by_id("journal-#{@issue.journals.first.id}-notes")).to include textile_text
               end
               scenario 'selected item of select box is textile' do
-                visit issue_path(@issue)
+                visit_issue(@issue)
                 journal_id = @issue.journals.first.id
                 find("#journal-#{journal_id}-notes").find("a[href='#']").click
                 expect(format_option("pwfmt-select-journal_#{journal_id}_notes", 'textile').selected?).to be_true
@@ -68,25 +68,25 @@ feature 'Journal notes', js: true do
           end
           context 'when save as textile' do
             background do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               all("a[href='#{edit_issue_path(@issue)}']").first.click
               select_format('#pwfmt-select-issue_notes', 'textile')
               find('#issue_notes').set raw_text
               find('#issue-form').find('input[name=commit]').click
             end
             scenario 'view as textile' do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               expect(html_by_id("journal-#{@issue.journals.first.id}-notes")).to include textile_text
             end
             scenario 'selected item of select box is textile' do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               journal_id = @issue.journals.first.id
               find("#journal-#{journal_id}-notes").find("a[href='#']").click
               expect(format_option("pwfmt-select-journal_#{journal_id}_notes", 'textile').selected?).to be_true
             end
             context 'when change format to markdown' do
               background do
-                visit issue_path(@issue)
+                visit_issue(@issue)
                 journal_id = @issue.journals.first.id
                 find("#journal-#{journal_id}-notes").find("a[href='#']").click
                 select_format("#pwfmt-select-journal_#{journal_id}_notes", 'markdown')
@@ -94,11 +94,11 @@ feature 'Journal notes', js: true do
                 find("#journal-#{journal_id}-form").find('input[name=commit]').click
               end
               scenario 'view as markdown' do
-                visit issue_path(@issue)
+                visit_issue(@issue)
                 expect(html_by_id("journal-#{@issue.journals.first.id}-notes")).to include markdown_text
               end
               scenario 'selected item of select box is markdown' do
-                visit issue_path(@issue)
+                visit_issue(@issue)
                 journal_id = @issue.journals.first.id
                 find("#journal-#{journal_id}-notes").find("a[href='#']").click
                 expect(format_option("pwfmt-select-journal_#{journal_id}_notes", 'markdown').selected?).to be_true
@@ -108,21 +108,21 @@ feature 'Journal notes', js: true do
           context 'when markdown and textile' do
             background do
               # markdown
-              visit issue_path(@issue)
+              visit_issue(@issue)
               all("a[href='#{edit_issue_path(@issue)}']").first.click
               select_format('#pwfmt-select-issue_notes', 'markdown')
               find('#issue_notes').set raw_text
               find('#issue-form').find('input[name=commit]').click
 
               # textile
-              visit issue_path(@issue)
+              visit_issue(@issue)
               all("a[href='#{edit_issue_path(@issue)}']").first.click
               select_format('#pwfmt-select-issue_notes', 'textile')
               find('#issue_notes').set raw_text
               find('#issue-form').find('input[name=commit]').click
             end
             scenario "view as markdown and view as textile in issue's histories" do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               @issue.journals.each do |journal|
                 journal.load_wiki_format!
                 if journal.notes.pwfmt.format == 'markdown'
@@ -135,7 +135,7 @@ feature 'Journal notes', js: true do
           end
           context 'when update issue description and register journal notes at same time' do
             background do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               open_issue_description_edit_area(@issue)
               select_format('#pwfmt-select-issue_description', issue_format == 'markdown' ? 'textile' : 'markdown')
               find('#issue_description').set raw_text
@@ -144,7 +144,7 @@ feature 'Journal notes', js: true do
               find('#issue-form').find('input[name=commit]').click
             end
             scenario "issue description is formatted as #{issue_format == 'markdown' ? 'textile' : 'markdown'}" do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               if issue_format == 'markdown'
                 expect(html_by_class('description')).to include textile_text
               else
@@ -152,7 +152,7 @@ feature 'Journal notes', js: true do
               end
             end
             scenario "journal notes is formatted as #{issue_format}" do
-              visit issue_path(@issue)
+              visit_issue(@issue)
               if issue_format == 'markdown'
                 expect(html_by_id("journal-#{@issue.journals.first.id}-notes")).to include markdown_text
               else
