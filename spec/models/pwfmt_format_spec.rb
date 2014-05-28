@@ -45,7 +45,7 @@ describe PwfmtFormat do
   end
 
   describe '.persist_all_as' do
-    fixtures :projects, :issues, :journals, :documents, :news, :comments, :wikis, :wiki_pages, :wiki_contents, :wiki_content_versions
+    fixtures :projects, :issues, :journals, :documents, :news, :messages, :comments, :wikis, :wiki_pages, :wiki_contents, :wiki_content_versions, :settings
 
     Redmine::WikiFormatting.format_names.each do |format|
       context "when given format is #{format}" do
@@ -140,6 +140,12 @@ describe PwfmtFormat do
               end
             end
           end
+        end
+        it 'format of welcome text is presisted' do
+          welcome_text_setting = Setting.where(name: 'welcome_text').first
+          pwfmt_format = PwfmtFormat.where(target_id: welcome_text_setting.id, field: 'settings_welcome_text').first
+          expect(pwfmt_format).not_to be_nil
+          expect(pwfmt_format.format).to eq format
         end
       end
     end

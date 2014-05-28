@@ -37,7 +37,8 @@ class PwfmtFormat < ActiveRecord::Base
         PwfmtFormat.persist(wiki_content,"wiki_content:v#{version.version}", format)
       end
     end
-    if Setting.welcome_text.present?
+    welcome_text_setting = Setting.where(name: 'welcome_text').first
+    if welcome_text_setting && welcome_text_setting.value.present?
       PwfmtFormat.persist(Setting.where(name: 'welcome_text').first,'settings_welcome_text', format)
     end
   end
