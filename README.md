@@ -53,5 +53,5 @@ Preview and wiki toolbar are not changed by this plugin.
 
 ## Changelog
 
-v0.5.0 (2014.05.13 JST): Pre release
-v1.0.0 (2014.05.28 JST): First major release
+* v0.5.0 (2014.05.13 JST): Pre release
+* v1.0.0 (2014.05.28 JST): First major release
