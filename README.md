@@ -45,3 +45,13 @@ $ touch tmp/restart.txt
 ## Caution
 
 Preview and wiki toolbar are not changed by this plugin.
+
+## Supported versions
+
+* Ruby: 1.9.3, 2.0.0, 2.1.x
+* Redmine: 2.5.x
+
+## Changelog
+
+v0.5.0 (2014.05.13 JST): Pre release
+v1.0.0 (2014.05.28 JST): First major release
