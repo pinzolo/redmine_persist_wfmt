@@ -7,20 +7,11 @@ module Pwfmt::NewsPatch
 
   def load_wiki_format!
     pwfmt = PwfmtFormat.where(target_id: self.id, field: 'news_description').first
-    description.pwfmt = pwfmt if description && pwfmt
+    description.wiki_format = pwfmt.format if description && pwfmt
   end
 
   def persist_wiki_format
-    if Pwfmt::Context.formats && Pwfmt::Context.formats.key?('news_description')
-      pwfmt = PwfmtFormat.where(target_id: self.id, field: 'news_description').first
-      if pwfmt
-        pwfmt.update_attributes(format: Pwfmt::Context.formats['news_description'])
-      else
-        PwfmtFormat.create(target_id: self.id,
-                           field: 'news_description',
-                           format: Pwfmt::Context.formats['news_description'])
-      end
-    end
+    PwfmtFormat.persist(self, 'news_description')
   end
 end
 

@@ -2,17 +2,15 @@ module Pwfmt::NewsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_filter :load_wiki_format
-    before_filter :reserve_format, only: [:show, :edit]
+    before_render :load_wiki_format, only: [:edit, :show]
+    before_render :reserve_format, only: [:edit, :show]
   end
 
   private
 
   def load_wiki_format
-    if defined?(@news)
-      @news.load_wiki_format!
-      @news.comments.each(&:load_wiki_format!)
-    end
+    @news.load_wiki_format!
+    @news.comments.each(&:load_wiki_format!)
   end
 
   def reserve_format
