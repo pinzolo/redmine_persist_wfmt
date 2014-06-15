@@ -15,7 +15,10 @@ module Pwfmt
     end
 
     def self.reserve_format(field, text)
-      if text.try(:pwfmt)
+      if text.respond_to?(:wiki_format)
+        Thread.current[:pwfmt_reserved_format] ||= {}
+        Thread.current[:pwfmt_reserved_format][field] = text.wiki_format
+      elsif text.try(:pwfmt)
         Thread.current[:pwfmt_reserved_format] ||= {}
         Thread.current[:pwfmt_reserved_format][field] = text.pwfmt.format
       end
@@ -24,6 +27,14 @@ module Pwfmt
     def self.clear
       self.formats = nil
       Thread.current[:pwfmt_reserved_format] = nil
+    end
+
+    def self.has_format?(key)
+      self.formats.present? && self.formats.key?(key)
+    end
+
+    def self.format(key)
+      self.formats[key] if has_format?(key)
     end
   end
 end

@@ -1,7 +1,10 @@
 class PwfmtFormat < ActiveRecord::Base
   unloadable
 
-  def self.persist(target, field, format)
+  def self.persist(target, field, wiki_format=nil)
+    format = wiki_format || Pwfmt::Context.format(field)
+    return unless Redmine::WikiFormatting.format_names.include?(format)
+
     pwfmt = PwfmtFormat.where(target_id: target.id, field: field).first
     if pwfmt
       pwfmt.update_attributes(format: format)

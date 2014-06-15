@@ -11,7 +11,7 @@ SimpleCov.start do
   end
 end
 
-require File.expand_path('spec/spec_helper') if File.exists?(File.expand_path('spec/spec_helper.rb'))
+require File.expand_path('spec/spec_helper') if File.exist?(File.expand_path('spec/spec_helper.rb'))
 
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist

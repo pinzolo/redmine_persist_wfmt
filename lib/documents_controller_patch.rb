@@ -2,18 +2,19 @@ module Pwfmt::DocumentsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_filter :load_wiki_format
-    before_filter :reserve_format, only: [:edit]
+    before_render :load_wiki_format, only: [:edit, :show]
+    before_render :load_all_documents_wiki_format, only: [:index]
+    before_render :reserve_format, only: [:edit]
   end
 
   private
 
   def load_wiki_format
-    if defined?(@document)
-      @document.load_wiki_format!
-    elsif defined?(@project)
-      @project.documents.each(&:load_wiki_format!)
-    end
+    @document.load_wiki_format!
+  end
+
+  def load_all_documents_wiki_format
+    @project.documents.each(&:load_wiki_format!)
   end
 
   def reserve_format
@@ -22,4 +23,5 @@ module Pwfmt::DocumentsControllerPatch
 end
 
 require 'documents_controller'
-DocumentsController.send(:include, Pwfmt::DocumentsControllerPatch)
+DocumentsController.__send__(:include, Pwfmt::DocumentsControllerPatch)
+
