@@ -12,18 +12,6 @@ module Pwfmt
       end
     end
 
-    def view_issues_form_details_bottom(context)
-      issue = context[:issue]
-      if issue && issue.description.try(:pwfmt)
-        script =<<-_EOF_
-(function() {
-  $('#pwfmt-select-issue_description').val('#{issue.description.pwfmt.format}').change();
-})();
-        _EOF_
-        javascript_tag(script)
-      end
-    end
-
     def view_settings_general_form(context)
       pwfmt = PwfmtFormat.where(field: 'settings_welcome_text').first
       if pwfmt
