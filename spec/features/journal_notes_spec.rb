@@ -125,7 +125,7 @@ feature 'Journal notes', js: true do
               visit_issue(@issue)
               @issue.journals.each do |journal|
                 journal.load_wiki_format!
-                if journal.notes.pwfmt.format == 'markdown'
+                if journal.notes.wiki_format == 'markdown'
                   expect(html_by_id("journal-#{journal.id}-notes")).to include markdown_text
                 else
                   expect(html_by_id("journal-#{journal.id}-notes")).to include textile_text

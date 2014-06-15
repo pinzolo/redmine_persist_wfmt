@@ -2,14 +2,14 @@ module Pwfmt::JournalsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_filter :load_wiki_format
-    before_filter :reserve_format, only: [:edit]
+    before_render :load_wiki_format, only: [:edit]
+    before_render :reserve_format, only: [:edit]
   end
 
   private
 
   def load_wiki_format
-    @journal.load_wiki_format! if defined?(@journal)
+    @journal.load_wiki_format!
   end
 
   def reserve_format

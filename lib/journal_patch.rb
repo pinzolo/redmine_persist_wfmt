@@ -7,25 +7,14 @@ module Pwfmt::JournalPatch
 
   def load_wiki_format!
     pwfmt = PwfmtFormat.where(target_id: self.id, field: 'journal_notes').first
-    notes.pwfmt = pwfmt if notes && pwfmt
+    notes.wiki_format = pwfmt.format if notes && pwfmt
   end
 
   def persist_wiki_format
-    if Pwfmt::Context.formats
-      if Pwfmt::Context.formats.key?('issue_notes')
-        PwfmtFormat.create(target_id: self.id,
-                           field: 'journal_notes',
-                           format: Pwfmt::Context.formats['issue_notes'])
-      elsif Pwfmt::Context.formats.key?("journal_#{self.id}_notes")
-        pwfmt = PwfmtFormat.where(target_id: self.id, field: 'journal_notes').first
-        if pwfmt
-          pwfmt.update_attributes(format: Pwfmt::Context.formats["journal_#{self.id}_notes"])
-        else
-          PwfmtFormat.create(target_id: self.id,
-                             field: 'journal_notes',
-                             format: Pwfmt::Context.formats["journal_#{self.id}_notes"])
-        end
-      end
+    if Pwfmt::Context.has_format?('issue_notes')
+      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.formats['issue_notes'])
+    elsif Pwfmt::Context.has_format?("journal_#{self.id}_notes")
+      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.formats["journal_#{self.id}_notes"])
     end
   end
 end
