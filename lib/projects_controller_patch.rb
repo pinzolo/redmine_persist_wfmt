@@ -2,13 +2,18 @@ module Pwfmt::ProjectsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_filter :load_wiki_format
+    before_render :load_wiki_format, only: [:edit, :settings, :show]
+    before_render :reserve_format, only: [:edit, :settings, :show]
   end
 
   private
 
   def load_wiki_format
-    @project.load_wiki_format! if defined?(@project)
+    @project.load_wiki_format!
+  end
+
+  def reserve_format
+    Pwfmt::Context.reserve_format('project_description', @project.description)
   end
 end
 
