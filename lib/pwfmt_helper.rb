@@ -1,11 +1,11 @@
 module Pwfmt::Helper
-  def pwfmt_select_script(field_id, format)
-    final_format = Pwfmt::Context.reserved_format_for(field_id) || format
+  def pwfmt_select_script(field_id, wiki_format)
+    format = Pwfmt::Context.reserved_format_for(field_id) || wiki_format
     <<-_EOF_
 (function(document) {
   var field = $('##{field_id}');
   if (!document.getElementById('pwfmt-format-#{field_id}')) {
-    field.after('<input type="hidden" id="pwfmt-format-#{field_id}" class="pwfmt-format" name="pwfmt[formats][#{field_id}]" value="#{final_format}">');
+    field.after('<input type="hidden" id="pwfmt-format-#{field_id}" class="pwfmt-format" name="pwfmt[formats][#{field_id}]" value="#{format}">');
   }
   if (!document.getElementById('pwfmt-select-#{field_id}')) {
     var select = '<select id="pwfmt-select-#{field_id}" name="pwfmt_select_format" class="pwfmt-select" data-target="#{field_id}">';
@@ -18,7 +18,7 @@ module Pwfmt::Helper
   $('#pwfmt-select-#{field_id}').on('change', function() {
     $('#pwfmt-format-' + this.dataset.target).val($(this).val());
   });
-  $('#pwfmt-select-#{field_id}').val('#{final_format}').change();
+  $('#pwfmt-select-#{field_id}').val('#{format}').change();
 })(window.document);
     _EOF_
   end
