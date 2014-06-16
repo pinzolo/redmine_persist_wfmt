@@ -3,7 +3,7 @@ module Pwfmt::ProjectsControllerPatch
 
   included do
     before_render :load_wiki_format, only: [:edit, :settings, :show]
-    before_render :reserve_format, only: [:edit, :settings, :show]
+    before_render :reserve_format, only: [:edit, :settings]
   end
 
   private
