@@ -3,7 +3,7 @@ Redmine::Plugin.register :redmine_persist_wfmt do
   author 'pinzolo'
   description 'This is a plugin for Redmine that persists wiki format'
   version '1.0.0'
-  url 'https://github.com/pinzolo/redimen_persist_wfmt'
+  url 'https://github.com/pinzolo/redmine_persist_wfmt'
   author_url 'https://github.com/pinzolo'
 end
 
