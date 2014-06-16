@@ -7,7 +7,7 @@ class Pwfmt::Context
     Thread.current[:pwfmt_formats] = formats
   end
 
-  def self.reserved_format(field)
+  def self.reserved_format_for(field)
     if Thread.current[:pwfmt_reserved_format]
       Thread.current[:pwfmt_reserved_format][field]
     end
@@ -32,7 +32,7 @@ class Pwfmt::Context
     self.formats.present? && self.formats.key?(key)
   end
 
-  def self.format(key)
+  def self.format_for(key)
     self.formats[key] if has_format?(key)
   end
 end
