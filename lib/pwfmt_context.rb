@@ -17,9 +17,6 @@ class Pwfmt::Context
     if text.respond_to?(:wiki_format)
       Thread.current[:pwfmt_reserved_format] ||= {}
       Thread.current[:pwfmt_reserved_format][field] = text.wiki_format
-    elsif text.try(:pwfmt)
-      Thread.current[:pwfmt_reserved_format] ||= {}
-      Thread.current[:pwfmt_reserved_format][field] = text.pwfmt.format
     end
   end
 
