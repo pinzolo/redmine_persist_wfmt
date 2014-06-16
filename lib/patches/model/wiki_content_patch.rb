@@ -7,20 +7,11 @@ module Pwfmt::WikiContentPatch
 
   def load_wiki_format!
     pwfmt = PwfmtFormat.where(target_id: self.id, field: "wiki_content:v#{self.version}").first
-    text.pwfmt = pwfmt if text && pwfmt
+    text.wiki_format = pwfmt.format if text && pwfmt
   end
 
   def persist_wiki_format
-    if Pwfmt::Context.formats && Pwfmt::Context.formats.key?('content_text')
-      pwfmt = PwfmtFormat.where(target_id: self.id, field: "wiki_content:v#{self.version}").first
-      if pwfmt
-        pwfmt.update_attributes(format: Pwfmt::Context.formats['content_text'])
-      else
-        PwfmtFormat.create(target_id: self.id,
-                           field: "wiki_content:v#{self.version}",
-                           format: Pwfmt::Context.formats['content_text'])
-      end
-    end
+    PwfmtFormat.persist(self, "wiki_content:v#{self.version}", Pwfmt::Context.format_for('content_text'))
   end
 end
 
