@@ -9,7 +9,7 @@ module Pwfmt::MessagesControllerPatch
   private
 
   def load_wiki_format
-    @message.load_wiki_format!
+    @message.load_wiki_format! if @message.respond_to?(:load_wiki_format!)
   end
 
   def reserve_format

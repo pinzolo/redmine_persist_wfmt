@@ -9,7 +9,7 @@ module Pwfmt::JournalsControllerPatch
   private
 
   def load_wiki_format
-    @journal.load_wiki_format!
+    @journal.load_wiki_format! if @journal.respond_to?(:load_wiki_format!)
   end
 
   def reserve_format

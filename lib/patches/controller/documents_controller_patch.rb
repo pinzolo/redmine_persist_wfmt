@@ -10,7 +10,7 @@ module Pwfmt::DocumentsControllerPatch
   private
 
   def load_wiki_format
-    @document.load_wiki_format!
+    @document.load_wiki_format! if @document.respond_to?(:load_wiki_format!)
   end
 
   def load_all_documents_wiki_format

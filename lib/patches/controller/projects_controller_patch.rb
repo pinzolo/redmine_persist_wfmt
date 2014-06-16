@@ -9,7 +9,7 @@ module Pwfmt::ProjectsControllerPatch
   private
 
   def load_wiki_format
-    @project.load_wiki_format!
+    @project.load_wiki_format! if @project.respond_to?(:load_wiki_format!)
   end
 
   def reserve_format
