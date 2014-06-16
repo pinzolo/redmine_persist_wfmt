@@ -17,7 +17,7 @@ module Pwfmt::NewsControllerPatch
   end
 
   def load_all_news_wiki_format
-    @newss.each(&:load_wiki_format!)
+    @newss.each(&:load_wiki_format!) if @newss
   end
 
   def reserve_format
