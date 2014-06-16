@@ -21,4 +21,4 @@ module Pwfmt::NewsControllerPatch
 end
 
 require 'news_controller'
-NewsController.send(:include, Pwfmt::NewsControllerPatch)
+NewsController.__send__(:include, Pwfmt::NewsControllerPatch)

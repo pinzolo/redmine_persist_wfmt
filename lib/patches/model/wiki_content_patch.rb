@@ -25,4 +25,4 @@ module Pwfmt::WikiContentPatch
 end
 
 require 'wiki_content'
-WikiContent.send(:include, Pwfmt::WikiContentPatch)
+WikiContent.__send__(:include, Pwfmt::WikiContentPatch)

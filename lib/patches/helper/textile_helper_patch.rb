@@ -11,4 +11,4 @@ module Pwfmt::TextileHelperPatch
   end
 end
 
-Redmine::WikiFormatting::Textile::Helper.send(:include, Pwfmt::TextileHelperPatch)
+Redmine::WikiFormatting::Textile::Helper.__send__(:include, Pwfmt::TextileHelperPatch)

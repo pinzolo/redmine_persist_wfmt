@@ -20,4 +20,4 @@ module Pwfmt::JournalPatch
 end
 
 require 'journal'
-Journal.send(:include, Pwfmt::JournalPatch)
+Journal.__send__(:include, Pwfmt::JournalPatch)

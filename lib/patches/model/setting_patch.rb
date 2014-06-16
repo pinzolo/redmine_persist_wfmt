@@ -11,4 +11,4 @@ module Pwfmt::SettingPatch
 end
 
 require 'setting'
-Setting.send(:include, Pwfmt::SettingPatch)
+Setting.__send__(:include, Pwfmt::SettingPatch)

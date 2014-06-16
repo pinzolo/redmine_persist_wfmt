@@ -17,5 +17,5 @@ module Pwfmt::IssuesControllerPatch
   end
 end
 
-require "issues_controller"
-IssuesController.send(:include, Pwfmt::IssuesControllerPatch)
+require 'issues_controller'
+IssuesController.__send__(:include, Pwfmt::IssuesControllerPatch)

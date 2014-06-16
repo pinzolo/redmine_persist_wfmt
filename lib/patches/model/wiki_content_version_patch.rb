@@ -8,4 +8,4 @@ module Pwfmt::WikiContentVersionPatch
 end
 
 require 'wiki_content'
-WikiContent::Version.send(:include, Pwfmt::WikiContentVersionPatch)
+WikiContent::Version.__send__(:include, Pwfmt::WikiContentVersionPatch)

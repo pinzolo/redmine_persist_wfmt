@@ -16,4 +16,4 @@ module Pwfmt::CommentPatch
 end
 
 require 'comment'
-Comment.send(:include, Pwfmt::CommentPatch)
+Comment.__send__(:include, Pwfmt::CommentPatch)

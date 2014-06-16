@@ -18,4 +18,4 @@ module Pwfmt::JournalsControllerPatch
 end
 
 require 'journals_controller'
-JournalsController.send(:include, Pwfmt::JournalsControllerPatch)
+JournalsController.__send__(:include, Pwfmt::JournalsControllerPatch)

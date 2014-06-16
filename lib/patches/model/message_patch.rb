@@ -16,4 +16,4 @@ module Pwfmt::MessagePatch
 end
 
 require 'message'
-Message.send(:include, Pwfmt::MessagePatch)
+Message.__send__(:include, Pwfmt::MessagePatch)

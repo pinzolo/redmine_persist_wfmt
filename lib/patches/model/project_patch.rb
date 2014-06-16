@@ -26,4 +26,4 @@ module Pwfmt::ProjectPatch
 end
 
 require 'project'
-Project.send(:include, Pwfmt::ProjectPatch)
+Project.__send__(:include, Pwfmt::ProjectPatch)

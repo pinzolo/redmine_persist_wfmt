@@ -16,4 +16,4 @@ module Pwfmt::NewsPatch
 end
 
 require 'news'
-News.send(:include, Pwfmt::NewsPatch)
+News.__sendo__(:include, Pwfmt::NewsPatch)

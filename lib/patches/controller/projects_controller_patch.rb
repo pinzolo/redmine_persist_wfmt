@@ -17,5 +17,5 @@ module Pwfmt::ProjectsControllerPatch
   end
 end
 
-require "projects_controller"
-ProjectsController.send(:include, Pwfmt::ProjectsControllerPatch)
+require 'projects_controller'
+ProjectsController.__send__(:include, Pwfmt::ProjectsControllerPatch)

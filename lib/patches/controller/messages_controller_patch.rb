@@ -18,4 +18,4 @@ module Pwfmt::MessagesControllerPatch
 end
 
 require 'messages_controller'
-MessagesController.send(:include, Pwfmt::MessagesControllerPatch)
+MessagesController.__send__(:include, Pwfmt::MessagesControllerPatch)

@@ -16,4 +16,4 @@ module Pwfmt::DocumentPatch
 end
 
 require 'document'
-Document.send(:include, Pwfmt::DocumentPatch)
+Document.__send__(:include, Pwfmt::DocumentPatch)

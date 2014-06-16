@@ -12,4 +12,4 @@ module Pwfmt::ApplicationHelperPatch
 end
 
 require 'application_helper'
-ApplicationHelper.send(:include, Pwfmt::ApplicationHelperPatch)
+ApplicationHelper.__send__(:include, Pwfmt::ApplicationHelperPatch)

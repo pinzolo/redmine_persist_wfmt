@@ -15,4 +15,4 @@ module Pwfmt::WikiControllerPatch
 end
 
 require 'wiki_controller'
-WikiController.send(:include, Pwfmt::WikiControllerPatch)
+WikiController.__send__(:include, Pwfmt::WikiControllerPatch)

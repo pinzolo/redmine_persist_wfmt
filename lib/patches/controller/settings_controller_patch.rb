@@ -18,6 +18,6 @@ module Pwfmt::SettingsControllerPatch
   end
 end
 
-require "settings_controller"
-SettingsController.send(:include, Pwfmt::SettingsControllerPatch)
+require 'settings_controller'
+SettingsController.__send__(:include, Pwfmt::SettingsControllerPatch)
 

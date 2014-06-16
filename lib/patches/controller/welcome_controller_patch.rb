@@ -13,7 +13,7 @@ module Pwfmt::WelcomeControllerPatch
   end
 end
 
-require "welcome_controller"
-WelcomeController.send(:include, Pwfmt::WelcomeControllerPatch)
+require 'welcome_controller'
+WelcomeController.__send__(:include, Pwfmt::WelcomeControllerPatch)
 
 
