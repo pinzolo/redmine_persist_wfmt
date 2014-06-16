@@ -13,7 +13,7 @@ module Pwfmt::IssuesControllerPatch
   end
 
   def reserve_format
-    Pwfmt::Context.reserve_format('issue_description', @issue.description)
+    Pwfmt::Context.reserve_format('issue_description', @issue.description) if @issue.respond_to?(:description)
   end
 end
 

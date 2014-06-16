@@ -13,7 +13,7 @@ module Pwfmt::ProjectsControllerPatch
   end
 
   def reserve_format
-    Pwfmt::Context.reserve_format('project_description', @project.description)
+    Pwfmt::Context.reserve_format('project_description', @project.description) if @project.respond_to?(:description)
   end
 end
 

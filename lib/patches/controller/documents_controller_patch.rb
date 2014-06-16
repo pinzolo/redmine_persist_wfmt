@@ -18,7 +18,7 @@ module Pwfmt::DocumentsControllerPatch
   end
 
   def reserve_format
-    Pwfmt::Context.reserve_format('document_description', @document.description)
+    Pwfmt::Context.reserve_format('document_description', @document.description) if @document.respond_to?(:description)
   end
 end
 
