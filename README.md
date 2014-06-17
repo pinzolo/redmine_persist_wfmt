@@ -18,26 +18,26 @@ Execute follow commands at your Redmine directory.
 
 ### 1. Clone to your Redmine's plugins directory:
 
-```shell
+```sh
 $ git clone https://gihub.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_persist_wfmt
 ```
 
 ### 2. Execute migration:
 
-```shell
+```sh
 $ bundle exec rake redmine:plugins:migrate NAME=redmine_persist_wfmt RAILS_ENV=production
 ```
 
 ### 3. Execute persist_all task:
 
-```shell
+```sh
 # FORMAT is required and must be 'textile' or 'markdown'
 $ bundle exec rake pwfmt:persist_all FORMAT=textile RAILS_ENV=production
 ```
 
 ### 4. Restart your Redmine:
 
-```shell
+```sh
 # In case of using passenger
 $ touch tmp/restart.txt
 ```
