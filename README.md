@@ -19,7 +19,7 @@ Execute follow commands at your Redmine directory.
 ### 1. Clone to your Redmine's plugins directory:
 
 ```sh
-$ git clone https://gihub.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_persist_wfmt
+$ git clone https://github.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_persist_wfmt
 ```
 
 ### 2. Execute migration:
