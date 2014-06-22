@@ -16,6 +16,20 @@ feature 'Issue description', js: true do
         visit new_project_issue_path(project_id: 'test')
         expect(format_option('pwfmt-select-issue_description', format).selected?).to be_true
       end
+      # scenario "preview as markdown" do
+      #   visit new_project_issue_path(project_id: 'test')
+      #   select_format('#pwfmt-select-issue_description', 'markdown')
+      #   find('#issue_description').set raw_text
+      #   click_link('Preview')
+      #   expect(html_by_id('preview')).to include markdown_text
+      # end
+      # scenario "preview as textile" do
+      #   visit new_project_issue_path(project_id: 'test')
+      #   select_format('#pwfmt-select-issue_description', 'textile')
+      #   find('#issue_description').set raw_text
+      #   click_link('Preview')
+      #   expect(html_by_id('preview')).to include textile_text
+      # end
       context 'when save as markdown' do
         background do
           visit new_project_issue_path(project_id: 'test')

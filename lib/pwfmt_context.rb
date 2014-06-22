@@ -25,11 +25,11 @@ class Pwfmt::Context
     Thread.current[:pwfmt_reserved_format] = nil
   end
 
-  def self.has_format?(key)
+  def self.has_format_for?(key)
     self.formats.present? && self.formats.key?(key)
   end
 
   def self.format_for(key)
-    self.formats[key] if has_format?(key)
+    self.formats[key] if has_format_for?(key)
   end
 end

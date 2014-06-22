@@ -29,6 +29,7 @@ module Features
         admin.password = password
         admin.admin = true
       end
+      admin.language = 'en'
       admin.save!
     end
 

@@ -11,10 +11,10 @@ module Pwfmt::JournalPatch
   end
 
   def persist_wiki_format
-    if Pwfmt::Context.has_format?('issue_notes')
-      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.formats['issue_notes'])
-    elsif Pwfmt::Context.has_format?("journal_#{self.id}_notes")
-      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.formats["journal_#{self.id}_notes"])
+    if Pwfmt::Context.has_format_for?('issue_notes')
+      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for('issue_notes'))
+    elsif Pwfmt::Context.has_format_for?("journal_#{self.id}_notes")
+      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for("journal_#{self.id}_notes"))
     end
   end
 end
