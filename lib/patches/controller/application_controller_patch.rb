@@ -17,5 +17,5 @@ module Pwfmt::ApplicationControllerPatch
   end
 end
 
-require "application_controller"
-ApplicationController.send(:include, Pwfmt::ApplicationControllerPatch)
+require 'application_controller'
+ApplicationController.__send__(:include, Pwfmt::ApplicationControllerPatch)

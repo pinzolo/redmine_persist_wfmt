@@ -11,4 +11,4 @@ module Pwfmt::MarkdownHelperPatch
   end
 end
 
-Redmine::WikiFormatting::Markdown::Helper.send(:include, Pwfmt::MarkdownHelperPatch)
+Redmine::WikiFormatting::Markdown::Helper.__send__(:include, Pwfmt::MarkdownHelperPatch)

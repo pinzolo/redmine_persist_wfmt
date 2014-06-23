@@ -12,4 +12,4 @@ module Pwfmt::JournalsHelperPatch
 end
 
 require 'journals_helper'
-JournalsHelper.send(:include, Pwfmt::JournalsHelperPatch)
+JournalsHelper.__send__(:include, Pwfmt::JournalsHelperPatch)
