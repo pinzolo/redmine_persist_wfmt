@@ -14,7 +14,7 @@ module Pwfmt::PreviewsControllerPatch
     elsif @notes
       if Pwfmt::Context.has_format_for?('issue_notes')
         @notes.wiki_format = Pwfmt::Context.format_for('issue_notes')
-      else
+      elsif Pwfmt::Context.formats.try(:first)
         @notes.wiki_format = Pwfmt::Context.formats.first.last
       end
     end
