@@ -22,20 +22,26 @@ Execute follow commands at your Redmine directory.
 $ git clone https://github.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_persist_wfmt
 ```
 
-### 2. Execute migration:
+#### 2. Install dependency gems:
+
+```sh
+$ bundle install --without test development
+```
+
+### 3. Execute migration:
 
 ```sh
 $ bundle exec rake redmine:plugins:migrate NAME=redmine_persist_wfmt RAILS_ENV=production
 ```
 
-### 3. Execute persist_all task:
+### 4. Execute persist_all task:
 
 ```sh
 # FORMAT is required and must be 'textile' or 'markdown'
 $ bundle exec rake pwfmt:persist_all FORMAT=textile RAILS_ENV=production
 ```
 
-### 4. Restart your Redmine:
+### 5. Restart your Redmine:
 
 ```sh
 # In case of using passenger
@@ -44,7 +50,7 @@ $ touch tmp/restart.txt
 
 ## Caution
 
-Preview and wiki toolbar are not changed by this plugin.
+Wiki toolbar is not changed by this plugin.
 
 ## Supported versions
 
@@ -55,3 +61,4 @@ Preview and wiki toolbar are not changed by this plugin.
 
 * v0.5.0 (2014.05.13 JST): Pre release
 * v1.0.0 (2014.05.28 JST): First major release
+* v1.1.0 (2014.06.23 JST): Enable preview and refactoring
