@@ -55,7 +55,7 @@ Wiki toolbar is not changed by this plugin.
 ## Supported versions
 
 * Ruby: 1.9.3, 2.0.0, 2.1.x
-* Redmine: 2.5.x
+* Redmine: 2.5.x, 2.6.0
 
 ## Changelog
 
