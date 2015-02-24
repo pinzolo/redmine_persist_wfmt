@@ -10,5 +10,7 @@ module Pwfmt::SettingPatch
   end
 end
 
-require 'setting'
-Setting.__send__(:include, Pwfmt::SettingPatch)
+Rails.configuration.to_prepare do
+  require 'setting'
+  Setting.__send__(:include, Pwfmt::SettingPatch)
+end
