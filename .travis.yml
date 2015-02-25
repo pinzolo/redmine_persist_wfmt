@@ -7,8 +7,8 @@ rvm:
 env:
   - TARGET=redmine REDMINE_VERSION=2.5.3
   - TARGET=plugin REDMINE_VERSION=2.5.3
-  - TARGET=redmine REDMINE_VERSION=2.6.0
-  - TARGET=plugin REDMINE_VERSION=2.6.0
+  - TARGET=redmine REDMINE_VERSION=2.6.2
+  - TARGET=plugin REDMINE_VERSION=2.6.2
 before_install: sh travis/before_install.sh
 script: sh travis/exec_test.sh
 matrix:
