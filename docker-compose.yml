@@ -1,0 +1,25 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+
+  redmine:
+    image: redmine:4
+    container_name: redmine
+    ports:
+      - 3000:3000
+    environment:
+      REDMINE_DB_POSTGRES: postgres
+      REDMINE_DB_DATABASE: ${DB_NAME}
+      REDMINE_DB_USERNAME: ${DB_USER}
+      REDMINE_DB_PASSWORD: ${DB_PASSWORD}
+      REDMINE_PLUGINS_MIGRATE: 'y'
+    volumes:
+      - .:/usr/src/redmine/plugins/redmine_persist_wfmt
