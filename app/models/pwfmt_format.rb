@@ -1,6 +1,4 @@
 class PwfmtFormat < ActiveRecord::Base
-  unloadable
-
   attr_accessible :target_id, :field, :format
 
   def self.persist(target, field, wiki_format=nil)
