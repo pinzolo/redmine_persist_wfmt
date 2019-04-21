@@ -4,11 +4,7 @@ group :development, :test do
   gem 'coveralls'
   gem 'pry'
   gem 'pry-rails'
-  if RUBY_VERSION >= '2.0.0'
-    gem 'pry-byebug'
-  else
-    gem 'pry-debugger'
-  end
+  gem 'pry-byebug'
 end
 
 group :test do
