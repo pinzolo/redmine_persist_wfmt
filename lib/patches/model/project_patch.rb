@@ -3,14 +3,16 @@ module Pwfmt::ProjectPatch
 
   included do
     after_save :persist_wiki_format
-    alias_method_chain :short_description, :pwfmt
+    prepend ShortDescription
   end
 
-  def short_description_with_pwfmt(length = 255)
-    short_description_without_pwfmt(length).tap do |short_desc|
-      if short_desc
-        load_wiki_format! unless description.try(:wiki_format)
-        short_desc.wiki_format = description.wiki_format
+  module ShortDescription
+    def short_description(length = 255)
+      super(length).tap do |short_desc|
+        if short_desc
+          load_wiki_format! unless description.try(:wiki_format)
+          short_desc.wiki_format = description.wiki_format
+        end
       end
     end
   end

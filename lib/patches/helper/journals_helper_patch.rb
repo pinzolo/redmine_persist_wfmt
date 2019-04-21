@@ -2,12 +2,14 @@ module Pwfmt::JournalsHelperPatch
   extend ActiveSupport::Concern
 
   included do
-    alias_method_chain :render_notes, :pwfmt
+    prepend RenderNotes
   end
 
-  def render_notes_with_pwfmt(issue, journal, options={})
-    journal.load_wiki_format!
-    render_notes_without_pwfmt(issue, journal, options)
+  module RenderNotes
+    def render_notes(issue, journal, options={})
+      journal.load_wiki_format!
+      super(issue, journal, options)
+    end
   end
 end
 
