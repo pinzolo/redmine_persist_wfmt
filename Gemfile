@@ -1,4 +1,4 @@
-gem 'rails-render_hooks'
+gem 'rails-render_hooks', '>= 2.0.0'
 
 group :development, :test do
   gem 'rspec', '~> 2.14.0'
