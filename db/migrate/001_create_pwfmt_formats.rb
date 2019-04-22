@@ -1,4 +1,4 @@
-class CreatePwfmtFormats < ActiveRecord::Migration
+class CreatePwfmtFormats < ActiveRecord::Migration[5.2]
   def change
     create_table :pwfmt_formats do |t|
       t.integer :target_id, null: false
