@@ -15,8 +15,8 @@ module Pwfmt::Helper
     });
     select += '</select>';
     if (toolbar) {
-      var $el = $('<li>' + select + '</li>');
-      toolbar.tabsBlock.childNodes[0].append($el[0]);
+      var $el = $(select);
+      toolbar.toolbar.append($el[0]);
     }
   }
   $('#pwfmt-select-#{field_id}').on('change', function() {
