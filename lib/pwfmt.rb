@@ -32,5 +32,3 @@ require_relative 'patches/model/project_patch'
 require_relative 'patches/model/setting_patch'
 require_relative 'patches/model/wiki_content_patch'
 require_relative 'patches/model/wiki_content_version_patch'
-
-require_relative 'patches/helper/journals_helper_patch'
