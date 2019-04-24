@@ -13,9 +13,6 @@ if (window.pwfmt == null) {
       hidden.name = 'pwfmt[formats][' + fieldId + ']';
       hidden.value = format;
       field.parentNode.appendChild(hidden);
-      // field.after(
-      //   '<input type="hidden" id="pwfmt-format-#{field_id}" class="pwfmt-format" name="pwfmt[formats][#{field_id}]" value="#{format}">'
-      // );
     },
     insertFormatSelector: function(doc, fieldId, format, formats, toolbar) {
       var selectorId = 'pwfmt-select-' + fieldId;
