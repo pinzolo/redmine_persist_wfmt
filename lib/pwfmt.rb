@@ -2,6 +2,7 @@ module Pwfmt ; end
 
 require_relative 'pwfmt_context'
 require_relative 'pwfmt_helper'
+require_relative 'pwfmt_hooks'
 
 require_relative 'patches/ext/string_patch'
 require_relative 'patches/ext/wiki_formatting_patch'
