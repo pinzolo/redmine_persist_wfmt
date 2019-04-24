@@ -14,7 +14,7 @@ module Pwfmt::WikiControllerPatch
   end
 
   def set_wiki_format_for_preview
-    @text.wiki_format = Pwfmt::Context.format_for('content_text') if @text
+    @text.wiki_format = params[:pwfmt_format] if @text && params[:pwfmt_format]
   end
 
   def reserve_format
