@@ -3,6 +3,18 @@ module Pwfmt::Helper
     format = Pwfmt::Context.reserved_format_for(field_id) || wiki_format
     <<-_EOF_
 (function(document, toolbar) {
+  // override preview
+  toolbar.previewTab.childNodes[0].classList.remove('tab-preview');
+  toolbar.previewTab.childNodes[0].classList.add('pwfmt-preview');
+  toolbar.hidePreview = function(event) {
+    if (event.target.classList.contains('selected')) { return; }
+    this.toolbar.classList.remove('hidden');
+    this.textarea.classList.remove('hidden');
+    this.preview.classList.add('hidden');
+    this.tabsBlock.getElementsByClassName('pwfmt-preview')[0].classList.remove('selected');
+    event.target.classList.add('selected');
+  };
+
   var field = $('##{field_id}');
   if (!document.getElementById('pwfmt-format-#{field_id}')) {
     field.after('<input type="hidden" id="pwfmt-format-#{field_id}" class="pwfmt-format" name="pwfmt[formats][#{field_id}]" value="#{format}">');
