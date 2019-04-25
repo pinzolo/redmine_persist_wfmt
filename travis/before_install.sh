@@ -23,6 +23,9 @@ mv spec     redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/spec
 mv Gemfile  redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/Gemfile
 mv init.rb  redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/init.rb
 
+# Copy Gemfile.local
+cat Gemfile.local >> redmine-${REDMINE_VERSION}/Gemfile.local
+
 # Create necessary files
 cat > redmine-${REDMINE_VERSION}/config/database.yml <<_EOS_
 test:
