@@ -42,31 +42,15 @@ if (window.pwfmt == null) {
         },
         false
       );
+      toolbar.formatSelector = select;
       toolbar.toolbar.append(select);
-    },
-    replacePreviewTabClass: function(toolbar) {
-      toolbar.previewTab.childNodes[0].classList.remove('tab-preview');
-      toolbar.previewTab.childNodes[0].classList.add('pwfmt-preview');
-    },
-    overrideHidePreview: function(toolbar) {
-      toolbar.hidePreview = function(event) {
-        if (event.target.classList.contains('selected')) {
-          return;
-        }
-        this.toolbar.classList.remove('hidden');
-        this.textarea.classList.remove('hidden');
-        this.preview.classList.add('hidden');
-        this.tabsBlock
-          .getElementsByClassName('pwfmt-preview')[0]
-          .classList.remove('selected');
-        event.target.classList.add('selected');
-      };
     }
   };
 }
 
 $(document).ready(function() {
-  $('#content').on('click', 'div.jstTabs a.pwfmt-preview', function(event) {
+  $('#content').off('click', 'div.jstTabs a.tab-preview');
+  $('#content').on('click', 'div.jstTabs a.tab-preview', function(event) {
     var tab = $(event.target);
 
     var url = tab.data('url');

@@ -3,8 +3,6 @@ module Pwfmt::Helper
     format = Pwfmt::Context.reserved_format_for(field_id) || wiki_format
     <<-_EOF_
 (function(doc, toolbar) {
-  pwfmt.replacePreviewTabClass(toolbar);
-  pwfmt.overrideHidePreview(toolbar);
   pwfmt.insertFormatHidden(doc, '#{field_id}', '#{format}');
   var formats = #{Redmine::WikiFormatting.formats_for_select};
   pwfmt.insertFormatSelector(doc, '#{field_id}', '#{format}', formats, toolbar);
