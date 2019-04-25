@@ -1,5 +1,7 @@
 require 'coveralls'
 require 'simplecov'
+require_relative '../../../spec/rails_helper'
+
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
   add_filter do |source_file|

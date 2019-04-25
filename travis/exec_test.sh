@@ -24,4 +24,3 @@ else
   # Execute plugin test by RSpec
   bundle exec rspec plugins/${PLUGIN_NAME}/spec -c
 fi
-
