@@ -44,6 +44,10 @@ if (window.pwfmt == null) {
       );
       toolbar.formatSelector = select;
       toolbar.toolbar.append(select);
+    },
+    isMarkdownSelected: function(toolbar) {
+      var idx = toolbar.formatSelector.selectedIndex;
+      return toolbar.formatSelector.options[idx].value === 'markdown';
     }
   };
 }
