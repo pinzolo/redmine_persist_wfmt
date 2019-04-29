@@ -7,6 +7,7 @@ require_relative 'pwfmt_hooks'
 require_relative 'patches/ext/string_patch'
 require_relative 'patches/ext/wiki_formatting_patch'
 
+require_relative 'patches/helper/application_helper_patch'
 require_relative 'patches/helper/textile_helper_patch'
 require_relative 'patches/helper/markdown_helper_patch'
 
