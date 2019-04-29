@@ -1,14 +1,8 @@
 group :development, :test do
-  gem 'rake', '< 11.0'
-  gem 'rspec-rails'
+  gem 'rake'
   gem 'coveralls'
-  gem 'pry'
-  gem 'pry-rails'
-  gem 'pry-byebug'
 end
 
 group :test do
-  gem 'poltergeist'
-  gem 'launchy'
-  gem 'database_cleaner'
+  gem 'webdrivers'
 end
