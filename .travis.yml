@@ -9,3 +9,5 @@ env:
   - TARGET=plugin REDMINE_VERSION=4.0.3
 before_install: sh travis/before_install.sh
 script: sh travis/exec_test.sh
+addons:
+  chrome: stable
