@@ -12,4 +12,5 @@ script: sh travis/exec_test.sh
 addons:
   chrome: stable
 allow_failures:
-  - TARGET=redmine REDMINE_VERSION=4.0.3
+  env:
+    - TARGET=redmine REDMINE_VERSION=4.0.3
