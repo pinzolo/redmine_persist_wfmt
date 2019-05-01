@@ -51,4 +51,12 @@ module Pwfmt::Testing::Macro
     find_by_id('document_description').set(text_for(format))
     find('input[name=commit]').click
   end
+
+  def save_news_as(format)
+    visit new_project_news_path(project_id: project_id)
+    select_format('pwfmt-select-news_description', format)
+    find_by_id('news_title').set('test')
+    find_by_id('news_description').set(text_for(format))
+    find('input[name=commit]').click
+  end
 end
