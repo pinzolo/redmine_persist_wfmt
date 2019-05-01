@@ -73,7 +73,7 @@ class NewsDescriptionTest < Pwfmt::SystemTestCase
     visit edit_news_path(News.first)
     select_markdown('pwfmt-select-news_description')
     find_by_id('news_description').set(markdown_text)
-    find('input[name=commit]').click
+    find('#news-form input[name=commit]').click
     visit news_path(News.first)
     assert markdown_include?('content')
   end
@@ -84,7 +84,7 @@ class NewsDescriptionTest < Pwfmt::SystemTestCase
     visit edit_news_path(News.first)
     select_textile('pwfmt-select-news_description')
     find_by_id('news_description').set(textile_text)
-    find('input[name=commit]').click
+    find('#news-form input[name=commit]').click
     visit news_path(News.first)
     assert textile_include?('content')
   end

@@ -70,22 +70,24 @@ class DocumentDescriptionTest < Pwfmt::SystemTestCase
   test 'update format to markdown from textile' do
     Setting.text_formatting = 'textile'
     save_document_as('markdown')
-    visit edit_document_path(Document.first)
+    doc = Document.first
+    visit edit_document_path(doc)
     select_markdown('pwfmt-select-document_description')
     find_by_id('document_description').set(markdown_text)
-    find('input[name=commit]').click
-    visit document_path(Document.first)
+    find("#edit_document_#{doc.id} input[name=commit]").click
+    visit document_path(doc)
     assert markdown_include?('content')
   end
 
   test 'update format to textile from markdown' do
     Setting.text_formatting = 'markdown'
     save_document_as('textile')
-    visit edit_document_path(Document.first)
+    doc = Document.first
+    visit edit_document_path(doc)
     select_textile('pwfmt-select-document_description')
     find_by_id('document_description').set(textile_text)
-    find('input[name=commit]').click
-    visit document_path(Document.first)
+    find("#edit_document_#{doc.id} input[name=commit]").click
+    visit document_path(doc)
     assert textile_include?('content')
   end
 end
