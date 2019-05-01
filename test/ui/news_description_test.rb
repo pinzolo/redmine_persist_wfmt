@@ -69,7 +69,7 @@ class NewsDescriptionTest < Pwfmt::SystemTestCase
 
   test 'update format to markdown from textile' do
     Setting.text_formatting = 'textile'
-    save_news_as('markdown')
+    save_news_as('textile')
     visit edit_news_path(News.first)
     select_markdown('pwfmt-select-news_description')
     find_by_id('news_description').set(markdown_text)
@@ -80,7 +80,7 @@ class NewsDescriptionTest < Pwfmt::SystemTestCase
 
   test 'update format to textile from markdown' do
     Setting.text_formatting = 'markdown'
-    save_news_as('textile')
+    save_news_as('markdown')
     visit edit_news_path(News.first)
     select_textile('pwfmt-select-news_description')
     find_by_id('news_description').set(textile_text)

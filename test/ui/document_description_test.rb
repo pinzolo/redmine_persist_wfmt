@@ -69,7 +69,7 @@ class DocumentDescriptionTest < Pwfmt::SystemTestCase
 
   test 'update format to markdown from textile' do
     Setting.text_formatting = 'textile'
-    save_document_as('markdown')
+    save_document_as('textile')
     doc = Document.first
     visit edit_document_path(doc)
     select_markdown('pwfmt-select-document_description')
@@ -81,7 +81,7 @@ class DocumentDescriptionTest < Pwfmt::SystemTestCase
 
   test 'update format to textile from markdown' do
     Setting.text_formatting = 'markdown'
-    save_document_as('textile')
+    save_document_as('markdown')
     doc = Document.first
     visit edit_document_path(doc)
     select_textile('pwfmt-select-document_description')
