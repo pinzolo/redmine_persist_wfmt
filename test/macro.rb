@@ -67,4 +67,14 @@ module Pwfmt::Testing::Macro
     find_by_id('comment_comments').set(text_for(format))
     find('#add_comment_form input[name=commit]').click
   end
+
+  def save_project_as(format)
+    visit new_project_path
+    prj_id = "test_#{format}"
+    select_format('pwfmt-select-project_description', format)
+    find_by_id('project_name').set(prj_id)
+    find_by_id('project_description').set(text_for(format))
+    find_by_id('project_identifier').set(prj_id)
+    find('#new_project input[name=commit]').click
+  end
 end
