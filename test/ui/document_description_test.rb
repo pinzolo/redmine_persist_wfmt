@@ -19,16 +19,18 @@ class DocumentDescriptionTest < Pwfmt::SystemTestCase
     assert markdown_selected?('pwfmt-select-document_description')
   end
 
-  test 'view as textile in index page when document is saved as textile' do
-    save_document_as('textile')
+  test 'textile initially selected in index page when format setting is textile' do
+    Setting.text_formatting = 'textile'
     visit project_documents_path(project_id: project_id)
-    assert textile_include?('content')
+    find('a.icon-add').click
+    assert textile_selected?('pwfmt-select-document_description')
   end
 
-  test 'view as markdown in index page when document is saved as markdown' do
-    save_document_as('markdown')
+  test 'markdown initially selected in index page when format setting is markdown' do
+    Setting.text_formatting = 'markdown'
     visit project_documents_path(project_id: project_id)
-    assert markdown_include?('content')
+    find('a.icon-add').click
+    assert markdown_selected?('pwfmt-select-document_description')
   end
 
   test 'view as textile in show page when document is saved as textile' do
@@ -40,6 +42,14 @@ class DocumentDescriptionTest < Pwfmt::SystemTestCase
   test 'view as markdown in show page when document is saved as markdown' do
     save_document_as('markdown')
     visit document_path(Document.first)
+    assert markdown_include?('content')
+  end
+
+  test 'view as own format in index page when documents are saved with different format' do
+    save_document_as('textile')
+    save_document_as('markdown')
+    visit project_documents_path(project_id: project_id)
+    assert textile_include?('content')
     assert markdown_include?('content')
   end
 
