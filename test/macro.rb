@@ -59,4 +59,12 @@ module Pwfmt::Testing::Macro
     find_by_id('news_description').set(text_for(format))
     find('input[name=commit]').click
   end
+
+  def save_news_comment_as(format)
+    visit news_path(News.first)
+    find('a', text: 'Add a comment').click
+    select_format('pwfmt-select-comment_comments', format)
+    find_by_id('comment_comments').set(text_for(format))
+    find('#add_comment_form input[name=commit]').click
+  end
 end
