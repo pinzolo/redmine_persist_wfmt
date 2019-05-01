@@ -9,7 +9,7 @@ class Pwfmt::SystemTestCase < ApplicationSystemTestCase
   include Pwfmt::Testing::Macro
   include Pwfmt::Testing::Value
 
-  driven_by :selenium, using: :headless_chrome, screen_size: [1024, 900], options: {
+  driven_by :selenium, using: :headless_chrome, screen_size: [1440, 900], options: {
     desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
       'chromeOptions' => {
         'prefs' => {
