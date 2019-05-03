@@ -35,6 +35,10 @@ module Pwfmt::Testing::Macro
     html_include?(id, html_for('textile'))
   end
 
+  def wait_for_preview
+    sleep(2)
+  end
+
   def sign_in_as_test_user
     create_test_user
 
@@ -86,7 +90,10 @@ module Pwfmt::Testing::Macro
     find('#message-form input[name=commit]').click
   end
 
-  def wait_for_preview
-    sleep(2)
+  def save_wiki_page_as(format)
+    visit "projects/#{project_id}/wiki"
+    find_by_id('content_text').set(text_for(format))
+    select_format('pwfmt-select-content_text', format)
+    find('#wiki_form input[name=commit]').click
   end
 end
