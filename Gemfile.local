@@ -1,6 +1,6 @@
 group :development, :test do
   gem 'rake'
-  gem 'coveralls'
+  gem 'coveralls', require: false
 end
 
 group :test do
