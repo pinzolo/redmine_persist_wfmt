@@ -96,4 +96,12 @@ module Pwfmt::Testing::Macro
     select_format('pwfmt-select-content_text', format)
     find('#wiki_form input[name=commit]').click
   end
+
+  def save_issue_as(format)
+    visit new_project_issue_path(project_id: project_id)
+    find_by_id('issue_subject').set('test')
+    find_by_id('issue_description').set(text_for(format))
+    select_format('pwfmt-select-issue_description', format)
+    find('#issue-form input[name=commit]').click
+  end
 end
