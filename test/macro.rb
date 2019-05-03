@@ -77,4 +77,12 @@ module Pwfmt::Testing::Macro
     find_by_id('project_identifier').set(prj_id)
     find('#new_project input[name=commit]').click
   end
+
+  def save_message_as(format)
+    visit new_board_message_path(Board.first)
+    find_by_id('message_subject').set('test')
+    find_by_id('message_content').set(text_for(format))
+    select_format('pwfmt-select-message_content', format)
+    find('#message-form input[name=commit]').click
+  end
 end
