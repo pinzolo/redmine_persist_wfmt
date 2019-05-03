@@ -29,4 +29,20 @@ class NewsCommentTest < Pwfmt::SystemTestCase
     assert textile_include?('comments')
     assert markdown_include?('comments')
   end
+
+  test 'preview by selected format' do
+    visit news_path(News.first)
+    find('a', text: 'Add a comment').click
+    select_markdown('pwfmt-select-comment_comments')
+    find_by_id('comment_comments').set(markdown_text)
+    find('#add_comment_form a.tab-preview').click
+    wait_for_preview
+    assert markdown_include?('preview_comment_comments')
+    find('#add_comment_form a.tab-edit').click
+    select_textile('pwfmt-select-comment_comments')
+    find_by_id('comment_comments').set(textile_text)
+    find('#add_comment_form a.tab-preview').click
+    wait_for_preview
+    assert textile_include?('preview_comment_comments')
+  end
 end

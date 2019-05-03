@@ -83,4 +83,19 @@ class MessageContentTest < Pwfmt::SystemTestCase
     visit board_message_path(Board.first, msg)
     assert textile_include?('content')
   end
+
+  test 'preview by selected format' do
+    visit new_board_message_path(Board.first)
+    select_markdown('pwfmt-select-message_content')
+    find_by_id('message_content').set(markdown_text)
+    find('#message-form a.tab-preview').click
+    wait_for_preview
+    assert markdown_include?('preview_message_content')
+    find('#message-form a.tab-edit').click
+    select_textile('pwfmt-select-message_content')
+    find_by_id('message_content').set(textile_text)
+    find('#message-form a.tab-preview').click
+    wait_for_preview
+    assert textile_include?('preview_message_content')
+  end
 end

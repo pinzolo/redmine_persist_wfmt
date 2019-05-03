@@ -90,4 +90,19 @@ class DocumentDescriptionTest < Pwfmt::SystemTestCase
     visit document_path(doc)
     assert textile_include?('content')
   end
+
+  test 'preview by selected format' do
+    visit new_project_document_path(project_id: project_id)
+    select_markdown('pwfmt-select-document_description')
+    find_by_id('document_description').set(markdown_text)
+    find('#new_document a.tab-preview').click
+    wait_for_preview
+    assert markdown_include?('preview_document_description')
+    find('#new_document a.tab-edit').click
+    select_textile('pwfmt-select-document_description')
+    find_by_id('document_description').set(textile_text)
+    find('#new_document a.tab-preview').click
+    wait_for_preview
+    assert textile_include?('preview_document_description')
+  end
 end

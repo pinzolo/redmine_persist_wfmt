@@ -75,4 +75,19 @@ class ProjectDescriptionTest < Pwfmt::SystemTestCase
     visit project_path('test_markdown')
     assert textile_include?('content')
   end
+
+  test 'preview by selected format' do
+    visit new_project_path
+    select_markdown('pwfmt-select-project_description')
+    find_by_id('project_description').set(markdown_text)
+    find('#new_project a.tab-preview').click
+    wait_for_preview
+    assert markdown_include?('preview_project_description')
+    find('#new_project a.tab-edit').click
+    select_textile('pwfmt-select-project_description')
+    find_by_id('project_description').set(textile_text)
+    find('#new_project a.tab-preview').click
+    wait_for_preview
+    assert textile_include?('preview_project_description')
+  end
 end

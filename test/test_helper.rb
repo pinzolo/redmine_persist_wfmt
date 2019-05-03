@@ -1,6 +1,8 @@
 require 'coveralls'
 require 'simplecov'
 
+module Pwfmt::Testing; end
+
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
   add_filter do |source_file|
@@ -11,5 +13,3 @@ SimpleCov.start do
     end
   end
 end
-
-module Pwfmt::Testing; end

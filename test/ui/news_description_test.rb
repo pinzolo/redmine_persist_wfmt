@@ -88,4 +88,19 @@ class NewsDescriptionTest < Pwfmt::SystemTestCase
     visit news_path(News.first)
     assert textile_include?('content')
   end
+
+  test 'preview by selected format' do
+    visit new_project_news_path(project_id: project_id)
+    select_markdown('pwfmt-select-news_description')
+    find_by_id('news_description').set(markdown_text)
+    find('#news-form a.tab-preview').click
+    wait_for_preview
+    assert markdown_include?('preview_news_description')
+    find('#news-form a.tab-edit').click
+    select_textile('pwfmt-select-news_description')
+    find_by_id('news_description').set(textile_text)
+    find('#news-form a.tab-preview').click
+    wait_for_preview
+    assert textile_include?('preview_news_description')
+  end
 end

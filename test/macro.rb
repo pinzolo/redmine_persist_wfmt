@@ -85,4 +85,8 @@ module Pwfmt::Testing::Macro
     select_format('pwfmt-select-message_content', format)
     find('#message-form input[name=commit]').click
   end
+
+  def wait_for_preview
+    sleep(2)
+  end
 end
