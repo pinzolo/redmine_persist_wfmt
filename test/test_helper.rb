@@ -13,3 +13,11 @@ SimpleCov.start do
     end
   end
 end
+
+# Remove when redmine uses newly selenium.
+module SilentDeprecated
+  def deprecate(old, new = nil)
+    # do nothing for shut out deprecated warning.
+  end
+end
+Selenium::WebDriver::Logger.prepend(SilentDeprecated)
