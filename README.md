@@ -1,6 +1,5 @@
 # redmine_persist_wfmt
 [![Build Status](https://secure.travis-ci.org/pinzolo/redmine_persist_wfmt.png)](http://travis-ci.org/pinzolo/redmine_persist_wfmt)
-[![Coverage Status](https://coveralls.io/repos/pinzolo/redmine_persist_wfmt/badge.png)](https://coveralls.io/r/pinzolo/redmine_persist_wfmt)
 
 redmine_persist_wfmt is a plugin for Redmine that keep and valid viewing wiki format of various documents. (issue, document, wiki ...)
 
