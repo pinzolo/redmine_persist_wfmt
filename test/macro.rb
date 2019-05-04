@@ -104,4 +104,11 @@ module Pwfmt::Testing::Macro
     select_format('pwfmt-select-issue_description', format)
     find('#issue-form input[name=commit]').click
   end
+
+  def save_journal_as(format)
+    visit edit_issue_path(Issue.first)
+    find_by_id('issue_notes').set(text_for(format))
+    select_format('pwfmt-select-issue_notes', format)
+    find('#issue-form input[name=commit]').click
+  end
 end
