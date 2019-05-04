@@ -2,8 +2,8 @@ module Pwfmt::ApplicationControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_filter :store_pwfmt_params
-    after_filter :clear_pwfmt_context
+    before_action :store_pwfmt_params
+    after_action :clear_pwfmt_context
   end
 
   private

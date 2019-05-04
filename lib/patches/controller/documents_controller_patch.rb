@@ -14,7 +14,13 @@ module Pwfmt::DocumentsControllerPatch
   end
 
   def load_all_documents_wiki_format
-    @project.documents.each(&:load_wiki_format!)
+    pwfmts = PwfmtFormat.where(target_id: @project.documents.map(&:id), field: 'document_description')
+    formats = Hash[pwfmts.map { |f| [f.target_id, f.format] }]
+    @grouped.values.each do |docs|
+      docs.each do |doc|
+        doc.description.wiki_format = formats[doc.id] if formats[doc.id]
+      end
+    end
   end
 
   def reserve_format

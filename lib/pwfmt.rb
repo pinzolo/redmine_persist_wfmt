@@ -2,10 +2,12 @@ module Pwfmt ; end
 
 require_relative 'pwfmt_context'
 require_relative 'pwfmt_helper'
+require_relative 'pwfmt_hooks'
 
 require_relative 'patches/ext/string_patch'
 require_relative 'patches/ext/wiki_formatting_patch'
 
+require_relative 'patches/helper/application_helper_patch'
 require_relative 'patches/helper/textile_helper_patch'
 require_relative 'patches/helper/markdown_helper_patch'
 
@@ -31,5 +33,3 @@ require_relative 'patches/model/project_patch'
 require_relative 'patches/model/setting_patch'
 require_relative 'patches/model/wiki_content_patch'
 require_relative 'patches/model/wiki_content_version_patch'
-
-require_relative 'patches/helper/journals_helper_patch'

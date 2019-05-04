@@ -1,14 +1,23 @@
 module Pwfmt::TextileHelperPatch
-  extend ActiveSupport::Concern
   include Pwfmt::Helper
 
-  included do
-    alias_method_chain :wikitoolbar_for, :pwfmt
+  def wikitoolbar_for(field_id, preview_url = preview_text_path)
+    super(field_id, preview_url) + javascript_tag(pwfmt_select_script(field_id, 'textile'))
   end
 
-  def wikitoolbar_for_with_pwfmt(field_id)
-    wikitoolbar_for_without_pwfmt(field_id) + javascript_tag(pwfmt_select_script(field_id, 'textile'))
+  def heads_for_wiki_formatter
+    Rails.logger.debug("pwfmt: #{@heads_for_wiki_formatter_included}")
+    unless @heads_for_wiki_formatter_included
+      content_for :header_tags do
+        javascript_include_tag('jstoolbar/jstoolbar') +
+        javascript_include_tag('toolbar', plugin: 'redmine_persist_wfmt') +
+        javascript_include_tag("jstoolbar/lang/jstoolbar-#{current_language.to_s.downcase}") +
+        javascript_tag("var wikiImageMimeTypes = #{Redmine::MimeType.by_type('image').to_json};") +
+        stylesheet_link_tag('jstoolbar')
+      end
+      @heads_for_wiki_formatter_included = true
+    end
   end
 end
 
-Redmine::WikiFormatting::Textile::Helper.__send__(:include, Pwfmt::TextileHelperPatch)
+Redmine::WikiFormatting::Textile::Helper.prepend(Pwfmt::TextileHelperPatch)

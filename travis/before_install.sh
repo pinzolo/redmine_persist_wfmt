@@ -19,9 +19,12 @@ mv assets   redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/assets
 mv config   redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/config
 mv db       redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/db
 mv lib      redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/lib
-mv spec     redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/spec
+mv test     redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/test
 mv Gemfile  redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/Gemfile
 mv init.rb  redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/init.rb
+
+# Copy Gemfile.local
+cat Gemfile.local >> redmine-${REDMINE_VERSION}/Gemfile.local
 
 # Create necessary files
 cat > redmine-${REDMINE_VERSION}/config/database.yml <<_EOS_
@@ -33,4 +36,3 @@ cp redmine-${REDMINE_VERSION}/plugins/${PLUGIN_NAME}/spec/fixtures/* redmine-${R
 
 # All move to work directory
 mv redmine-${REDMINE_VERSION}/* .
-

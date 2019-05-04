@@ -2,26 +2,13 @@ module Pwfmt::PreviewsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_render :set_issue_wiki_format, only: [:issue]
-    before_render :set_news_wiki_format, only: [:news]
+    before_render :set_wiki_format_for_preview
   end
 
   private
 
-  def set_issue_wiki_format
-    if @description
-      @description.wiki_format = Pwfmt::Context.format_for('issue_description')
-    elsif @notes
-      if Pwfmt::Context.has_format_for?('issue_notes')
-        @notes.wiki_format = Pwfmt::Context.format_for('issue_notes')
-      elsif Pwfmt::Context.formats.try(:first)
-        @notes.wiki_format = Pwfmt::Context.formats.first.last
-      end
-    end
-  end
-
-  def set_news_wiki_format
-    @text.wiki_format = Pwfmt::Context.format_for('news_description') if @text
+  def set_wiki_format_for_preview
+    @text.wiki_format = params[:pwfmt_format] if @text && params[:pwfmt_format]
   end
 end
 
