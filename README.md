@@ -48,6 +48,10 @@ $ bundle exec rake pwfmt:persist_all FORMAT=textile RAILS_ENV=production
 $ touch tmp/restart.txt
 ```
 
+## Try this
+
+This plugin contains `docker-compose.yml`, so you can try this by `docker-compose up`.
+
 ## Supported versions
 
 * Ruby: 2.3.x, 2.4.x, 2.5.x, 2.6.x
