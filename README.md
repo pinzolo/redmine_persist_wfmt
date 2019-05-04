@@ -48,17 +48,16 @@ $ bundle exec rake pwfmt:persist_all FORMAT=textile RAILS_ENV=production
 $ touch tmp/restart.txt
 ```
 
-## Caution
-
-Wiki toolbar is not changed by this plugin.
-
 ## Supported versions
 
-* Ruby: 1.9.3, 2.0.0, 2.1.x
-* Redmine: 2.5.x, 2.6.0
+* Ruby: 2.3.x, 2.4.x, 2.5.x, 2.6.x
+* Redmine: 4.0.x
+
+If you want this plugin with Redmine2 or 3, use **ver1** branch.
 
 ## Changelog
 
 * v0.5.0 (2014.05.13 JST): Pre release
 * v1.0.0 (2014.05.28 JST): First major release
 * v1.1.0 (2014.06.23 JST): Enable preview and refactoring
+* v2.0.0 (2019.05.04 JST): Compatible with Redmine4
