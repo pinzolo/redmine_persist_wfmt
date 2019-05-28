@@ -4,8 +4,8 @@ module Pwfmt::JournalsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_render :load_wiki_format, only: [:edit, :update]
-    before_render :reserve_format, only: [:edit]
+    before_render :load_wiki_format, only: %i(edit update)
+    before_render :reserve_format, only: :edit
   end
 
   private

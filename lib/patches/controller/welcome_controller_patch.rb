@@ -4,7 +4,7 @@ module Pwfmt::WelcomeControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_render :load_wiki_format, only: [:index]
+    before_render :load_wiki_format, only: :index
   end
 
   private

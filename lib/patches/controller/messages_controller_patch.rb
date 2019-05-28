@@ -4,9 +4,9 @@ module Pwfmt::MessagesControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_render :load_wiki_format, only: [:edit, :show]
-    before_render :reserve_format, only: [:edit]
-    before_render :set_wiki_format_for_preview, only: [:preview]
+    before_render :load_wiki_format, only: %i(edit show)
+    before_render :reserve_format, only: :edit
+    before_render :set_wiki_format_for_preview, only: :preview
   end
 
   private

@@ -5,9 +5,9 @@ module Pwfmt::NewsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_render :load_wiki_format, only: [:edit, :show]
-    before_render :load_all_news_wiki_format, only: [:index]
-    before_render :reserve_format, only: [:edit, :show]
+    before_render :load_wiki_format, only: %i(edit show)
+    before_render :load_all_news_wiki_format, only: :index
+    before_render :reserve_format, only: %i(edit show)
   end
 
   private

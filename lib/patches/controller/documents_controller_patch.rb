@@ -4,9 +4,9 @@ module Pwfmt::DocumentsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_render :load_wiki_format, only: [:edit, :show]
-    before_render :load_all_documents_wiki_format, only: [:index]
-    before_render :reserve_format, only: [:edit]
+    before_render :load_wiki_format, only: %i(edit show)
+    before_render :load_all_documents_wiki_format, only: :index
+    before_render :reserve_format, only: :edit
   end
 
   private

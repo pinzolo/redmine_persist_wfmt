@@ -9,6 +9,6 @@ class CreatePwfmtFormats < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :pwfmt_formats, [:target_id, :field], unique: true, name: 'pwfmt_formats_uniq_idx'
+    add_index :pwfmt_formats, %i(target_id field), unique: true, name: 'pwfmt_formats_uniq_idx'
   end
 end
