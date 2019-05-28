@@ -1,5 +1,6 @@
 group :development, :test do
   gem 'rake'
+  gem 'rubocop', require: false
   # gem 'coveralls', require: false
 end
 
