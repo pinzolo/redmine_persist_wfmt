@@ -17,7 +17,7 @@ class Pwfmt::SystemTestCase < ApplicationSystemTestCase
         'prefs' => {
           'download.default_directory' => DOWNLOADS_PATH,
           'download.prompt_for_download' => false,
-          'plugins.plugins_disabled' => ["Chrome PDF Viewer"]
+          'plugins.plugins_disabled' => ['Chrome PDF Viewer']
         }
       }
     )

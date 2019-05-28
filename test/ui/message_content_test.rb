@@ -68,7 +68,7 @@ class MessageContentTest < Pwfmt::SystemTestCase
     visit "boards/#{Board.first.id}/topics/#{msg.id}/edit"
     select_markdown('pwfmt-select-message_content')
     find_by_id('message_content').set(markdown_text)
-    find("#message-form input[name=commit]").click
+    find('#message-form input[name=commit]').click
     visit board_message_path(Board.first, msg)
     assert markdown_include?('content')
   end
@@ -80,7 +80,7 @@ class MessageContentTest < Pwfmt::SystemTestCase
     visit "boards/#{Board.first.id}/topics/#{msg.id}/edit"
     select_textile('pwfmt-select-message_content')
     find_by_id('message_content').set(textile_text)
-    find("#message-form input[name=commit]").click
+    find('#message-form input[name=commit]').click
     visit board_message_path(Board.first, msg)
     assert textile_include?('content')
   end
