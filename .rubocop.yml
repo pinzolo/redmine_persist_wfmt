@@ -17,3 +17,7 @@ Rails:
 # Redmine modify string that is generated from plugin.
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+# Redmine does not have ApplicationRecord.
+Rails/ApplicationRecord:
+  Enabled: false
