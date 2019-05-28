@@ -26,7 +26,7 @@ class ToolbarTest < Pwfmt::SystemTestCase
     # { key: 'precode', before: '', after: '' },
     { key: 'link',    before: '', after: '[[]]' },
     { key: 'img',     before: '', after: '!!' }
-  ]
+  ].freeze
   MARKDOWN_DATA = [
     { key: 'strong',  before: '', after: '****' },
     { key: 'em',      before: '', after: '**' },
@@ -44,7 +44,7 @@ class ToolbarTest < Pwfmt::SystemTestCase
     # { key: 'precode', before: '', after: '' },
     { key: 'link',    before: '', after: '[[]]' },
     { key: 'img',     before: '', after: '![]()' }
-  ]
+  ].freeze
 
   test 'insert support string to textarea by selected format' do
     Setting.text_formatting = 'textile'
