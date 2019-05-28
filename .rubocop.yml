@@ -21,3 +21,7 @@ Style/FrozenStringLiteralComment:
 # Redmine does not have ApplicationRecord.
 Rails/ApplicationRecord:
   Enabled: false
+
+# 80 is too restrict.
+Metrics/LineLength:
+  Max: 120
