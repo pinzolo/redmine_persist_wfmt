@@ -10,3 +10,7 @@
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 AllCops:
   TargetRubyVersion: 2.3
+
+# Redmine modify string that is generated from plugin.
+Style/FrozenStringLiteralComment:
+  Enabled: false
