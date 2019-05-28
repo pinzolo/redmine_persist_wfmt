@@ -4,8 +4,8 @@ module Pwfmt::SettingsControllerPatch
   extend ActiveSupport::Concern
 
   included do
-    before_render :load_wiki_format, only: %i(edit index)
-    before_render :reserve_format, only: %i(edit index)
+    before_render :load_wiki_format, only: %i[edit index]
+    before_render :reserve_format, only: %i[edit index]
   end
 
   private
