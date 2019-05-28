@@ -7,15 +7,13 @@ module Pwfmt::Testing::DataHelper
   def create_test_user
     password = 'foobarbaztest'
     user = User.where(login: 'test').first
-    if user
-      user.password = password
-    else
+    unless user
       user = User.new(firstname: 'Redmine',
                       lastname: 'Test',
                       mail: 'test@example.net')
       user.login = 'test'
-      user.password = password
     end
+    user.password = password
     user.language = 'en'
     user.save!
   end
