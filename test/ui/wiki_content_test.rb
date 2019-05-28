@@ -1,5 +1,6 @@
 require_relative '../system_test_case'
 
+# This class tests that user can select wiki format of wiki's content.
 class WikiContentTest < Pwfmt::SystemTestCase
   setup do
     load_default_data

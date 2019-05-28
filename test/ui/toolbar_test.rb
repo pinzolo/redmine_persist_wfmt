@@ -1,5 +1,6 @@
 require_relative '../system_test_case'
 
+# This class tests that toolbar assign helper value to textarea with considering selected format.
 class ToolbarTest < Pwfmt::SystemTestCase
   setup do
     load_default_data

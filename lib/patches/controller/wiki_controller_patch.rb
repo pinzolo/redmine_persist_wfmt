@@ -1,3 +1,5 @@
+# This patch extends WikiController.
+# This patch enables to load and save user selected format of wiki content.
 module Pwfmt::WikiControllerPatch
   extend ActiveSupport::Concern
 
@@ -9,14 +11,17 @@ module Pwfmt::WikiControllerPatch
 
   private
 
+  # load wiki format of itself from database
   def load_wiki_format
     @content.load_wiki_format! if @content.respond_to?(:load_wiki_format!)
   end
 
+  # set wiki format of itself for preview from request
   def set_wiki_format_for_preview
     @text.wiki_format = params[:pwfmt_format] if @text && params[:pwfmt_format]
   end
 
+  # store wiki format of itself to database
   def reserve_format
     if @text && @content
       @text.wiki_format = @content.text.wiki_format

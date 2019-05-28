@@ -1,3 +1,4 @@
+# Values are used in test.
 module Pwfmt::Testing::Value
   def markdown_text
     '*This is markdown text.*'

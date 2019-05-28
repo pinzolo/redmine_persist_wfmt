@@ -1,3 +1,5 @@
+# creates pwfmt_format table.
+# pwfmt_format table stores each wiki format that selected by user.
 class CreatePwfmtFormats < ActiveRecord::Migration[5.2]
   def change
     create_table :pwfmt_formats do |t|

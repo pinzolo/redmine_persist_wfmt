@@ -1,3 +1,4 @@
+# Capybara macros for system test
 module Pwfmt::Testing::Macro
   def select_box_selected?(id, value)
     find_by_id(id).find("option[value=#{value}]").selected?

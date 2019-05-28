@@ -1,3 +1,4 @@
+# Context is thread local storage for this plugin
 class Pwfmt::Context
   def self.formats
     Thread.current[:pwfmt_formats]

@@ -1,3 +1,4 @@
+# PwfmtFormat controls 'pwfmt_format' table.
 class PwfmtFormat < ActiveRecord::Base
   def self.persist(target, field, wiki_format=nil)
     format = wiki_format || Pwfmt::Context.format_for(field)

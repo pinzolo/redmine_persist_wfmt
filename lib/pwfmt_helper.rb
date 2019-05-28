@@ -1,3 +1,4 @@
+# helper module for using in views
 module Pwfmt::Helper
   def pwfmt_select_script(field_id, wiki_format)
     format = Pwfmt::Context.reserved_format_for(field_id) || wiki_format

@@ -4,6 +4,8 @@ require_relative './data_helper'
 require_relative './macro'
 require_relative './value'
 
+# Base class for this plugin's system test
+# Use headless chrome as selenium driver
 class Pwfmt::SystemTestCase < ApplicationSystemTestCase
   include Pwfmt::Testing::DataHelper
   include Pwfmt::Testing::Macro

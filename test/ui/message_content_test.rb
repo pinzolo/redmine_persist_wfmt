@@ -1,5 +1,6 @@
 require_relative '../system_test_case'
 
+# This class tests that user can select wiki format of message's content.
 class MessageContentTest < Pwfmt::SystemTestCase
   setup do
     load_default_data

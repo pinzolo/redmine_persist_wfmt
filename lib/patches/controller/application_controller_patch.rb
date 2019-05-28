@@ -1,3 +1,6 @@
+# This patch extends ApplicationController.
+# Save wiki format to context before action.
+# Clear context after action.
 module Pwfmt::ApplicationControllerPatch
   extend ActiveSupport::Concern
 
@@ -8,10 +11,12 @@ module Pwfmt::ApplicationControllerPatch
 
   private
 
+  # save format to context
   def store_pwfmt_params
     Pwfmt::Context.formats = params[:pwfmt][:formats] if params[:pwfmt]
   end
 
+  # clear context
   def clear_pwfmt_context
     Pwfmt::Context.clear
   end

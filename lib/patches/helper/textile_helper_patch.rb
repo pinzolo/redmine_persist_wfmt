@@ -1,10 +1,13 @@
+# This patch extends textile helper
 module Pwfmt::TextileHelperPatch
   include Pwfmt::Helper
 
+  # append dropdown for selecting format.
   def wikitoolbar_for(field_id, preview_url = preview_text_path)
     super(field_id, preview_url) + javascript_tag(pwfmt_select_script(field_id, 'textile'))
   end
 
+  # overrides toolbar script for switching action by selected format.
   def heads_for_wiki_formatter
     super
 

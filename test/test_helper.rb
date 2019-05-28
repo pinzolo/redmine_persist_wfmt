@@ -1,6 +1,7 @@
 # require 'coveralls'
 # require 'simplecov'
 
+# Root module of testing API for this plugin.
 module Pwfmt::Testing; end
 
 # SimpleCov.formatter = Coveralls::SimpleCov::Formatter

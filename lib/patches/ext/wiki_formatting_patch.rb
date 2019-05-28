@@ -1,4 +1,6 @@
+# This patch extends Redmine::WikiFormatting module.
 module Pwfmt::WikiFormattingPatch
+  # render html with self format instead of setting.
   def to_html(format, text, options = {})
     if text.respond_to?(:wiki_format) && Redmine::WikiFormatting.format_names.include?(text.wiki_format)
       super(text.wiki_format, text, options)

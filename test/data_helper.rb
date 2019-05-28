@@ -1,3 +1,4 @@
+# Helper module for creating test data to database.
 module Pwfmt::Testing::DataHelper
   def load_default_data(lang = 'en')
     Redmine::DefaultData::Loader.load(lang)

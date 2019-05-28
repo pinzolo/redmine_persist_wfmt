@@ -1,3 +1,4 @@
+# This patch extends project that allows load and save wiki format of welcom text
 module Pwfmt::SettingPatch
   extend ActiveSupport::Concern
 
@@ -5,6 +6,7 @@ module Pwfmt::SettingPatch
     after_save :persist_wiki_format
   end
 
+  # save wiki format of welcom text to database.
   def persist_wiki_format
     PwfmtFormat.persist(self, 'settings_welcome_text')
   end
