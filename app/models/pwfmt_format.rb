@@ -40,8 +40,7 @@ class PwfmtFormat < ActiveRecord::Base
       end
     end
     welcome_text_setting = Setting.where(name: 'welcome_text').first
-    if welcome_text_setting && welcome_text_setting.value.present?
-      PwfmtFormat.persist(Setting.where(name: 'welcome_text').first, 'settings_welcome_text', format)
-    end
+    valid = welcome_text_setting && welcome_text_setting.value.present?
+    PwfmtFormat.persist(Setting.where(name: 'welcome_text').first, 'settings_welcome_text', format) if valid
   end
 end

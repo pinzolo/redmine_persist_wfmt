@@ -14,10 +14,10 @@ module Pwfmt::NewsControllerPatch
 
   # load wiki format of itself and comments from database
   def load_wiki_format
-    if @news.respond_to?(:load_wiki_format!)
-      @news.load_wiki_format!
-      @news.comments.each(&:load_wiki_format!)
-    end
+    return unless @news.respond_to?(:load_wiki_format!)
+
+    @news.load_wiki_format!
+    @news.comments.each(&:load_wiki_format!)
   end
 
   # load wiki format of journals from database

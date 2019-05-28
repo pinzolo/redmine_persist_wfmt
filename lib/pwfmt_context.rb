@@ -14,10 +14,10 @@ class Pwfmt::Context
     end
 
     def reserve_format(field, text)
-      if text.respond_to?(:wiki_format)
-        Thread.current[:pwfmt_reserved_format] ||= {}
-        Thread.current[:pwfmt_reserved_format][field] = text.wiki_format
-      end
+      return unless text.respond_to?(:wiki_format)
+
+      Thread.current[:pwfmt_reserved_format] ||= {}
+      Thread.current[:pwfmt_reserved_format][field] = text.wiki_format
     end
 
     def clear

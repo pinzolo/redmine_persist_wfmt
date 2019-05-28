@@ -11,12 +11,12 @@ module Pwfmt::TextileHelperPatch
   def heads_for_wiki_formatter
     super
 
-    unless @pwfmt_heads_for_wiki_formatter_included
-      content_for :header_tags do
-        javascript_include_tag('toolbar', plugin: 'redmine_persist_wfmt')
-      end
-      @pwfmt_heads_for_wiki_formatter_included = true
+    return if @pwfmt_heads_for_wiki_formatter_included
+
+    content_for :header_tags do
+      javascript_include_tag('toolbar', plugin: 'redmine_persist_wfmt')
     end
+    @pwfmt_heads_for_wiki_formatter_included = true
   end
 end
 

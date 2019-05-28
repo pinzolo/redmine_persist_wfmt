@@ -23,10 +23,10 @@ module Pwfmt::WikiControllerPatch
 
   # store wiki format of itself to database
   def reserve_format
-    if @text && @content
-      @text.wiki_format = @content.text.wiki_format
-      Pwfmt::Context.reserve_format('content_text', @text)
-    end
+    return unless @text && @content
+
+    @text.wiki_format = @content.text.wiki_format
+    Pwfmt::Context.reserve_format('content_text', @text)
   end
 end
 
