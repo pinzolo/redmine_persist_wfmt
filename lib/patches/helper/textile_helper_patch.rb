@@ -7,15 +7,13 @@ module Pwfmt::TextileHelperPatch
 
   def heads_for_wiki_formatter
     Rails.logger.debug("pwfmt: #{@heads_for_wiki_formatter_included}")
-    unless @heads_for_wiki_formatter_included
+    super
+
+    unless @pwfmt_heads_for_wiki_formatter_included
       content_for :header_tags do
-        javascript_include_tag('jstoolbar/jstoolbar') +
-        javascript_include_tag('toolbar', plugin: 'redmine_persist_wfmt') +
-        javascript_include_tag("jstoolbar/lang/jstoolbar-#{current_language.to_s.downcase}") +
-        javascript_tag("var wikiImageMimeTypes = #{Redmine::MimeType.by_type('image').to_json};") +
-        stylesheet_link_tag('jstoolbar')
+        javascript_include_tag('toolbar', plugin: 'redmine_persist_wfmt')
       end
-      @heads_for_wiki_formatter_included = true
+      @pwfmt_heads_for_wiki_formatter_included = true
     end
   end
 end
