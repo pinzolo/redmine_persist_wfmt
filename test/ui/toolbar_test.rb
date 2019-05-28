@@ -55,7 +55,8 @@ class ToolbarTest < Pwfmt::SystemTestCase
       dataset.each do |data|
         textarea.set(data[:before])
         find("button.jstb_#{data[:key]}").click
-        assert textarea.value == data[:after], "[#{format}][#{data[:key]}] expected: #{data[:after]}, but got #{textarea.value}"
+        assert textarea.value == data[:after],
+               "[#{format}][#{data[:key]}] expected: #{data[:after]}, but got #{textarea.value}"
       end
     end
   end
