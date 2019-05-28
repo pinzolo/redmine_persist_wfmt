@@ -24,4 +24,3 @@ end
 
 require 'settings_controller'
 SettingsController.__send__(:include, Pwfmt::SettingsControllerPatch)
-

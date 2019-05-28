@@ -18,5 +18,3 @@ end
 
 require 'welcome_controller'
 WelcomeController.__send__(:include, Pwfmt::WelcomeControllerPatch)
-
-
