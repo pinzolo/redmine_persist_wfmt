@@ -4,7 +4,7 @@ module Pwfmt::WikiContentVersionPatch
 
   # load wiki format of content from database
   def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.wiki_content_id, field: "wiki_content:v#{self.version}").first
+    pwfmt = PwfmtFormat.where(target_id: wiki_content_id, field: "wiki_content:v#{version}").first
     text.wiki_format = pwfmt.format if text && pwfmt
   end
 end

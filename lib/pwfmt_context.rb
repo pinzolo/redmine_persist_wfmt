@@ -27,10 +27,10 @@ class Pwfmt::Context
   end
 
   def self.has_format_for?(key)
-    self.formats.present? && self.formats.key?(key)
+    formats.present? && formats.key?(key)
   end
 
   def self.format_for(key)
-    self.formats[key] if has_format_for?(key)
+    formats[key] if has_format_for?(key)
   end
 end

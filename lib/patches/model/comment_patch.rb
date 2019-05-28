@@ -8,7 +8,7 @@ module Pwfmt::CommentPatch
 
   # load wiki format of comment from database
   def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.id, field: 'comment_comments').first
+    pwfmt = PwfmtFormat.where(target_id: id, field: 'comment_comments').first
     comments.wiki_format = pwfmt.format if comments && pwfmt
   end
 

@@ -8,7 +8,7 @@ module Pwfmt::JournalPatch
 
   # load wiki format of note from database
   def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.id, field: 'journal_notes').first
+    pwfmt = PwfmtFormat.where(target_id: id, field: 'journal_notes').first
     notes.wiki_format = pwfmt.format if notes && pwfmt
   end
 
@@ -16,8 +16,8 @@ module Pwfmt::JournalPatch
   def persist_wiki_format
     if Pwfmt::Context.has_format_for?('issue_notes')
       PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for('issue_notes'))
-    elsif Pwfmt::Context.has_format_for?("journal_#{self.id}_notes")
-      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for("journal_#{self.id}_notes"))
+    elsif Pwfmt::Context.has_format_for?("journal_#{id}_notes")
+      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for("journal_#{id}_notes"))
     end
   end
 end

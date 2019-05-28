@@ -8,7 +8,7 @@ module Pwfmt::IssuePatch
 
   # load wiki format of description from database
   def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.id, field: 'issue_description').first
+    pwfmt = PwfmtFormat.where(target_id: id, field: 'issue_description').first
     description.wiki_format = pwfmt.format if description && pwfmt
   end
 

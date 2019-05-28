@@ -8,7 +8,7 @@ module Pwfmt::MessagePatch
 
   # load wiki format of content from database
   def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.id, field: 'message_content').first
+    pwfmt = PwfmtFormat.where(target_id: id, field: 'message_content').first
     content.wiki_format = pwfmt.format if content && pwfmt
   end
 
