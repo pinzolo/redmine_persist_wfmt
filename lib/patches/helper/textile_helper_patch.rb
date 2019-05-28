@@ -6,7 +6,6 @@ module Pwfmt::TextileHelperPatch
   end
 
   def heads_for_wiki_formatter
-    Rails.logger.debug("pwfmt: #{@heads_for_wiki_formatter_included}")
     super
 
     unless @pwfmt_heads_for_wiki_formatter_included
