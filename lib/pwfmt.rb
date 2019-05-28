@@ -1,5 +1,5 @@
 # Root module for this plugin
-module Pwfmt ; end
+module Pwfmt; end
 
 require_relative 'pwfmt_context'
 require_relative 'pwfmt_helper'
