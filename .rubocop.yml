@@ -14,14 +14,20 @@ AllCops:
 Rails:
   Enabled: true
 
-# Redmine modify string that is generated from plugin.
-Style/FrozenStringLiteralComment:
-  Enabled: false
+# 80 is too restrict.
+Metrics/LineLength:
+  Max: 120
 
 # Redmine does not have ApplicationRecord.
 Rails/ApplicationRecord:
   Enabled: false
 
-# 80 is too restrict.
-Metrics/LineLength:
-  Max: 120
+# `find_by_id` is Capybara method not ActiveRecord.
+Rails/DynamicFindBy:
+  Exclude:
+    - 'test/macro.rb'
+    - 'test/ui/*'
+
+# Redmine modify string that is generated from plugin.
+Style/FrozenStringLiteralComment:
+  Enabled: false
