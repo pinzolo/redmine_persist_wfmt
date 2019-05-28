@@ -6,7 +6,7 @@ class PwfmtFormat < ActiveRecord::Base
 
     pwfmt = PwfmtFormat.where(target_id: target.id, field: field).first
     if pwfmt
-      pwfmt.update_attributes(format: format)
+      pwfmt.update(format: format)
     else
       PwfmtFormat.create(target_id: target.id, field: field, format: format)
     end
