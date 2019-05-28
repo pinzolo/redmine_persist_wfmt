@@ -9,9 +9,7 @@ class Pwfmt::Context
   end
 
   def self.reserved_format_for(field)
-    if Thread.current[:pwfmt_reserved_format]
-      Thread.current[:pwfmt_reserved_format][field]
-    end
+    Thread.current[:pwfmt_reserved_format][field] if Thread.current[:pwfmt_reserved_format]
   end
 
   def self.reserve_format(field, text)
