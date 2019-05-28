@@ -11,6 +11,9 @@
 AllCops:
   TargetRubyVersion: 2.3
 
+Rails:
+  Enabled: true
+
 # Redmine modify string that is generated from plugin.
 Style/FrozenStringLiteralComment:
   Enabled: false
