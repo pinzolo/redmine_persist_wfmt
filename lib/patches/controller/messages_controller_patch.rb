@@ -14,7 +14,7 @@ module Pwfmt::MessagesControllerPatch
   # load wiki format of itself from database
   def load_wiki_format
     @message.load_wiki_format! if @message.respond_to?(:load_wiki_format!)
-    @replies.each(&:load_wiki_format!) if @replies
+    @replies&.each(&:load_wiki_format!)
   end
 
   # set wiki format of itself for preview from request

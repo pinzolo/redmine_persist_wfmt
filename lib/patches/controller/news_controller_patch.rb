@@ -22,7 +22,7 @@ module Pwfmt::NewsControllerPatch
 
   # load wiki format of journals from database
   def load_all_news_wiki_format
-    @newss.each(&:load_wiki_format!) if @newss
+    @newss&.each(&:load_wiki_format!)
   end
 
   # store wiki format of itself to database
