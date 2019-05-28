@@ -14,9 +14,9 @@ module Pwfmt::JournalPatch
 
   # save wiki format of note to database.
   def persist_wiki_format
-    if Pwfmt::Context.has_format_for?('issue_notes')
+    if Pwfmt::Context.format_for?('issue_notes')
       PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for('issue_notes'))
-    elsif Pwfmt::Context.has_format_for?("journal_#{id}_notes")
+    elsif Pwfmt::Context.format_for?("journal_#{id}_notes")
       PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for("journal_#{id}_notes"))
     end
   end
