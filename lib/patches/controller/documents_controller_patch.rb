@@ -19,13 +19,16 @@ module Pwfmt
 
     # load all documents' wiki format
     def load_all_documents_wiki_format
-      pwfmts = PwfmtFormat.where(target_id: @project.documents.map(&:id), field: 'document_description')
-      formats = Hash[pwfmts.map { |f| [f.target_id, f.format] }]
-      @grouped.values.each do |docs|
-        docs.each do |doc|
-          doc.description.wiki_format = formats[doc.id] if formats[doc.id]
-        end
+      formats = preload_formats
+      @grouped.values.flatten.each do |doc|
+        doc.description.wiki_format = formats[doc.id] if formats[doc.id]
       end
+    end
+
+    def preload_formats
+      doc_ids = @project.documents.map(&:id)
+      PwfmtFormat.where(target_id: doc_ids, field: 'document_description')
+                 .pluck(:target_id, :format).to_h
     end
 
     # store wiki format of itself to database

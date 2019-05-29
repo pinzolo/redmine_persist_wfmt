@@ -25,8 +25,6 @@ class PwfmtFormat < ActiveRecord::Base
       persist_welcome_text_as(format)
     end
 
-    private
-
     def persist_all_projects_as(format)
       Project.find_each do |project|
         PwfmtFormat.persist(project, 'project_description', format) if project.description.present?
@@ -70,8 +68,8 @@ class PwfmtFormat < ActiveRecord::Base
     end
 
     def persist_all_wiki_as(format)
-      WikiContent.find_each do |wiki_content|
-        wiki_content.versions.find_each do |version|
+      WikiContent.includes(:versions).find_each do |wiki_content|
+        wiki_content.versions.each do |version|
           PwfmtFormat.persist(wiki_content, "wiki_content:v#{version.version}", format)
         end
       end
