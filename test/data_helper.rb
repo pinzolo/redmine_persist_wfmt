@@ -10,9 +10,7 @@ module Pwfmt
         password = 'foobarbaztest'
         user = User.where(login: 'test').first
         unless user
-          user = User.new(firstname: 'Redmine',
-                          lastname: 'Test',
-                          mail: 'test@example.net')
+          user = User.new(firstname: 'Redmine', lastname: 'Test', mail: 'test@example.net')
           user.login = 'test'
         end
         user.password = password

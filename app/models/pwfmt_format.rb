@@ -22,9 +22,7 @@ class PwfmtFormat < ActiveRecord::Base
       persist_all_messagess_as(format)
       persist_all_comments_as(format)
       persist_all_wiki_as(format)
-      welcome_text_setting = Setting.where(name: 'welcome_text').first
-      valid = welcome_text_setting && welcome_text_setting.value.present?
-      PwfmtFormat.persist(Setting.where(name: 'welcome_text').first, 'settings_welcome_text', format) if valid
+      persist_welcome_text_as(format)
     end
 
     private
@@ -77,6 +75,12 @@ class PwfmtFormat < ActiveRecord::Base
           PwfmtFormat.persist(wiki_content, "wiki_content:v#{version.version}", format)
         end
       end
+    end
+
+    def persist_welcome_text_as(format)
+      welcome_text_setting = Setting.where(name: 'welcome_text').first
+      valid = welcome_text_setting && welcome_text_setting.value.present?
+      PwfmtFormat.persist(Setting.where(name: 'welcome_text').first, 'settings_welcome_text', format) if valid
     end
   end
 end
