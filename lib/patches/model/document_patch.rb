@@ -1,17 +1,22 @@
-module Pwfmt::DocumentPatch
-  extend ActiveSupport::Concern
+module Pwfmt
+  # This patch extends document that allows load and save wiki format of description
+  module DocumentPatch
+    extend ActiveSupport::Concern
 
-  included do
-    after_save :persist_wiki_format
-  end
+    included do
+      after_save :persist_wiki_format
+    end
 
-  def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.id, field: 'document_description').first
-    description.wiki_format = pwfmt.format if description && pwfmt
-  end
+    # load wiki format of description from database
+    def load_wiki_format!
+      pwfmt = PwfmtFormat.where(target_id: id, field: 'document_description').first
+      description.wiki_format = pwfmt.format if description && pwfmt
+    end
 
-  def persist_wiki_format
-    PwfmtFormat.persist(self, 'document_description')
+    # save wiki format of description to database.
+    def persist_wiki_format
+      PwfmtFormat.persist(self, 'document_description')
+    end
   end
 end
 

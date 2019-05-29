@@ -1,6 +1,7 @@
 require_relative '../system_test_case'
 
-class ProjectDescriptionTest < Pwfmt::SystemTestCase
+# This class tests that user can select wiki format of project's description.
+class ProjectDescriptionTest < Pwfmt::Testing::SystemTestCase
   setup do
     load_default_data
     sign_in_as_test_user

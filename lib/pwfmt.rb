@@ -1,5 +1,3 @@
-module Pwfmt ; end
-
 require_relative 'pwfmt_context'
 require_relative 'pwfmt_helper'
 require_relative 'pwfmt_hooks'

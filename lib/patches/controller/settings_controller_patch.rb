@@ -1,23 +1,28 @@
-module Pwfmt::SettingsControllerPatch
-  extend ActiveSupport::Concern
+module Pwfmt
+  # This patch extends SettingsController.
+  # This patch enables to load and save user selected format of welcom text.
+  module SettingsControllerPatch
+    extend ActiveSupport::Concern
 
-  included do
-    before_render :load_wiki_format, only: [:edit, :index]
-    before_render :reserve_format, only: [:edit, :index]
-  end
+    included do
+      before_render :load_wiki_format, only: %i[edit index]
+      before_render :reserve_format, only: %i[edit index]
+    end
 
-  private
+    private
 
-  def load_wiki_format
-    pwfmt = PwfmtFormat.where(field: 'settings_welcome_text').first
-    Setting.welcome_text.wiki_format = pwfmt.format if Setting.welcome_text && pwfmt
-  end
+    # load wiki format of itself from database
+    def load_wiki_format
+      pwfmt = PwfmtFormat.where(field: 'settings_welcome_text').first
+      Setting.welcome_text.wiki_format = pwfmt.format if Setting.welcome_text && pwfmt
+    end
 
-  def reserve_format
-    Pwfmt::Context.reserve_format('settings_welcome_text', Setting.welcome_text)
+    # store wiki format of itself to database
+    def reserve_format
+      Pwfmt::Context.reserve_format('settings_welcome_text', Setting.welcome_text)
+    end
   end
 end
 
 require 'settings_controller'
 SettingsController.__send__(:include, Pwfmt::SettingsControllerPatch)
-

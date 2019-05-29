@@ -1,6 +1,7 @@
 require_relative '../system_test_case'
 
-class NewsDescriptionTest < Pwfmt::SystemTestCase
+# This class tests that user can select wiki format of news' description.
+class NewsDescriptionTest < Pwfmt::Testing::SystemTestCase
   setup do
     load_default_data
     sign_in_as_test_user

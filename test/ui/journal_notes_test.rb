@@ -1,6 +1,7 @@
 require_relative '../system_test_case'
 
-class JournalNotesTest < Pwfmt::SystemTestCase
+# This class tests that user can select wiki format of journal's note.
+class JournalNotesTest < Pwfmt::Testing::SystemTestCase
   setup do
     load_default_data
     sign_in_as_test_user

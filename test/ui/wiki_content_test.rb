@@ -1,6 +1,7 @@
 require_relative '../system_test_case'
 
-class WikiContentTest < Pwfmt::SystemTestCase
+# This class tests that user can select wiki format of wiki's content.
+class WikiContentTest < Pwfmt::Testing::SystemTestCase
   setup do
     load_default_data
     sign_in_as_test_user
@@ -54,7 +55,7 @@ class WikiContentTest < Pwfmt::SystemTestCase
     find('a.icon-edit').click
     select_markdown('pwfmt-select-content_text')
     find_by_id('content_text').set(markdown_text)
-    find("#wiki_form input[name=commit]").click
+    find('#wiki_form input[name=commit]').click
     visit "projects/#{project_id}/wiki"
     assert markdown_include?('content')
   end
@@ -66,7 +67,7 @@ class WikiContentTest < Pwfmt::SystemTestCase
     find('a.icon-edit').click
     select_textile('pwfmt-select-content_text')
     find_by_id('content_text').set(textile_text)
-    find("#wiki_form input[name=commit]").click
+    find('#wiki_form input[name=commit]').click
     visit "projects/#{project_id}/wiki"
     assert textile_include?('content')
   end

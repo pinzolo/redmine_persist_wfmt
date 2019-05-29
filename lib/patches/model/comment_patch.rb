@@ -1,17 +1,22 @@
-module Pwfmt::CommentPatch
-  extend ActiveSupport::Concern
+module Pwfmt
+  # This patch extends comment that allows load and save wiki format of comment
+  module CommentPatch
+    extend ActiveSupport::Concern
 
-  included do
-    after_save :persist_wiki_format
-  end
+    included do
+      after_save :persist_wiki_format
+    end
 
-  def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.id, field: 'comment_comments').first
-    comments.wiki_format = pwfmt.format if comments && pwfmt
-  end
+    # load wiki format of comment from database
+    def load_wiki_format!
+      pwfmt = PwfmtFormat.where(target_id: id, field: 'comment_comments').first
+      comments.wiki_format = pwfmt.format if comments && pwfmt
+    end
 
-  def persist_wiki_format
-    PwfmtFormat.persist(self, 'comment_comments')
+    # save wiki format of comment to database.
+    def persist_wiki_format
+      PwfmtFormat.persist(self, 'comment_comments')
+    end
   end
 end
 

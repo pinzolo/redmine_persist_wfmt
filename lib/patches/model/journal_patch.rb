@@ -1,20 +1,25 @@
-module Pwfmt::JournalPatch
-  extend ActiveSupport::Concern
+module Pwfmt
+  # This patch extends journal that allows load and save wiki format of note
+  module JournalPatch
+    extend ActiveSupport::Concern
 
-  included do
-    after_save :persist_wiki_format
-  end
+    included do
+      after_save :persist_wiki_format
+    end
 
-  def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: self.id, field: 'journal_notes').first
-    notes.wiki_format = pwfmt.format if notes && pwfmt
-  end
+    # load wiki format of note from database
+    def load_wiki_format!
+      pwfmt = PwfmtFormat.where(target_id: id, field: 'journal_notes').first
+      notes.wiki_format = pwfmt.format if notes && pwfmt
+    end
 
-  def persist_wiki_format
-    if Pwfmt::Context.has_format_for?('issue_notes')
-      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for('issue_notes'))
-    elsif Pwfmt::Context.has_format_for?("journal_#{self.id}_notes")
-      PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for("journal_#{self.id}_notes"))
+    # save wiki format of note to database.
+    def persist_wiki_format
+      if Pwfmt::Context.format_for?('issue_notes')
+        PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for('issue_notes'))
+      elsif Pwfmt::Context.format_for?("journal_#{id}_notes")
+        PwfmtFormat.persist(self, 'journal_notes', Pwfmt::Context.format_for("journal_#{id}_notes"))
+      end
     end
   end
 end
