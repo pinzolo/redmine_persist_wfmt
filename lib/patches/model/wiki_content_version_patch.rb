@@ -1,11 +1,13 @@
-# This patch extends wiki version that allows load and save wiki format of content
-module Pwfmt::WikiContentVersionPatch
-  extend ActiveSupport::Concern
+module Pwfmt
+  # This patch extends wiki version that allows load and save wiki format of content
+  module WikiContentVersionPatch
+    extend ActiveSupport::Concern
 
-  # load wiki format of content from database
-  def load_wiki_format!
-    pwfmt = PwfmtFormat.where(target_id: wiki_content_id, field: "wiki_content:v#{version}").first
-    text.wiki_format = pwfmt.format if text && pwfmt
+    # load wiki format of content from database
+    def load_wiki_format!
+      pwfmt = PwfmtFormat.where(target_id: wiki_content_id, field: "wiki_content:v#{version}").first
+      text.wiki_format = pwfmt.format if text && pwfmt
+    end
   end
 end
 
