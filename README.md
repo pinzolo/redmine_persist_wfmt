@@ -56,11 +56,12 @@ This plugin contains `docker-compose.yml`, so you can try this by `docker-compos
 * Ruby: 2.3.x, 2.4.x, 2.5.x, 2.6.x
 * Redmine: 4.0.x
 
-If you want this plugin with Redmine2 or 3, use **ver1** branch.
+If you want to use this plugin with Redmine2 or 3, use **ver1** branch.
 
 ## Changelog
 
-* v0.5.0 (2014.05.13 JST): Pre release
-* v1.0.0 (2014.05.28 JST): First major release
-* v1.1.0 (2014.06.23 JST): Enable preview and refactoring
-* v2.0.0 (2019.05.04 JST): Compatible with Redmine4
+* v0.5.0 (2014-05-13 JST): Pre release
+* v1.0.0 (2014-05-28 JST): First major release
+* v1.1.0 (2014-06-23 JST): Enable preview and refactoring
+* v2.0.0 (2019-05-04 JST): Compatible with Redmine4
+* v2.0.1 (2019-05-28 JST): Safely toolbar scripts update
