@@ -21,7 +21,7 @@ Execute follow commands at your Redmine directory.
 $ git clone https://github.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_persist_wfmt
 ```
 
-#### 2. Install dependency gems:
+### 2. Install dependency gems:
 
 ```sh
 $ bundle install --without test development
