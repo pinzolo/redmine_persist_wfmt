@@ -1,7 +1,7 @@
 # redmine_persist_wfmt
 [![Build Status](https://secure.travis-ci.org/pinzolo/redmine_persist_wfmt.png)](http://travis-ci.org/pinzolo/redmine_persist_wfmt)
 
-**redmine_persist_wfmt** is a plugin for Redmine that keep and valid viewing wiki format of various documents. (issue, document, wiki ...)
+**redmine_persist_wfmt** is a plugin for Redmine that enables to select and save wiki format of various documents. (issue, document, wiki ...)
 
 ## Feature senario
 
@@ -23,6 +23,8 @@ $ git clone https://github.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_
 
 ### 2. Install dependency gems:
 
+If you are already using Redmine, you probably only call `bundle`.
+
 ```sh
 $ bundle install --without test development
 ```
@@ -34,6 +36,8 @@ $ bundle exec rake redmine:plugins:migrate NAME=redmine_persist_wfmt RAILS_ENV=p
 ```
 
 ### 4. Execute persist_all task:
+
+This task saves all wiki formats that already exist.
 
 ```sh
 # FORMAT is required and must be 'textile' or 'markdown'
@@ -57,6 +61,18 @@ This plugin contains `docker-compose.yml`, so you can try this by `docker-compos
 * Redmine: 4.0.x
 
 If you want to use this plugin with Redmine2 or 3, use **ver1** branch.
+
+## Contributing
+
+To check tests and rubocop, you need to merge `Gemfile.local` in this plugin to `Gemfile.local` of your Redmine.
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Check pass all tests (`RAILS_ENV=test bundle exec rake redmine:plugins:test:ui`)
+5. Check pass rubocop (`bundle exec rubocop plugins/redmine_persist_wfmt`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create new Pull Request
 
 ## Changelog
 
