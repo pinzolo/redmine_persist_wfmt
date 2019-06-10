@@ -15,41 +15,35 @@
 
 Execute follow commands at your Redmine directory.
 
-### 1. Clone to your Redmine's plugins directory:
+1. Clone to your Redmine's plugins directory
+    ```sh
+    $ git clone https://github.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_persist_wfmt
+    ```
 
-```sh
-$ git clone https://github.com/pinzolo/redmine_persist_wfmt.git plugins/redmine_persist_wfmt
-```
+1. Install dependency gems
 
-### 2. Install dependency gems:
+    If you are already using Redmine, you probably only call `bundle`.
 
-If you are already using Redmine, you probably only call `bundle`.
+    ```sh
+    $ bundle install --without test development
+    ```
 
-```sh
-$ bundle install --without test development
-```
+1. Execute migration
 
-### 3. Execute migration:
+    ```sh
+    $ bundle exec rake redmine:plugins:migrate NAME=redmine_persist_wfmt RAILS_ENV=production
+    ```
 
-```sh
-$ bundle exec rake redmine:plugins:migrate NAME=redmine_persist_wfmt RAILS_ENV=production
-```
+1. Execute `persist_all` task
 
-### 4. Execute persist_all task:
+    This task saves all wiki formats that already exist.
 
-This task saves all wiki formats that already exist.
+    ```sh
+    # FORMAT is required and must be 'textile' or 'markdown'
+    $ bundle exec rake pwfmt:persist_all FORMAT=textile RAILS_ENV=production
+    ```
 
-```sh
-# FORMAT is required and must be 'textile' or 'markdown'
-$ bundle exec rake pwfmt:persist_all FORMAT=textile RAILS_ENV=production
-```
-
-### 5. Restart your Redmine:
-
-```sh
-# In case of using passenger
-$ touch tmp/restart.txt
-```
+1. Restart your Redmine
 
 ## Try this
 
