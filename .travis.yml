@@ -5,8 +5,8 @@ rvm:
   - 2.5
   - 2.6
 env:
-  - TARGET=redmine REDMINE_VERSION=4.0.3
-  - TARGET=plugin REDMINE_VERSION=4.0.3
+  - TARGET=redmine REDMINE_VERSION=4.0.4
+  - TARGET=plugin REDMINE_VERSION=4.0.4
 before_install: sh travis/before_install.sh
 script: sh travis/exec_test.sh
 addons:
@@ -14,10 +14,10 @@ addons:
 matrix:
   allow_failures:
     - rvm: 2.3
-      env: TARGET=redmine REDMINE_VERSION=4.0.3
+      env: TARGET=redmine REDMINE_VERSION=4.0.4
     - rvm: 2.4
-      env: TARGET=redmine REDMINE_VERSION=4.0.3
+      env: TARGET=redmine REDMINE_VERSION=4.0.4
     - rvm: 2.5
-      env: TARGET=redmine REDMINE_VERSION=4.0.3
+      env: TARGET=redmine REDMINE_VERSION=4.0.4
     - rvm: 2.6
-      env: TARGET=redmine REDMINE_VERSION=4.0.3
+      env: TARGET=redmine REDMINE_VERSION=4.0.4
