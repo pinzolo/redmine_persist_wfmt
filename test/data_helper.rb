@@ -3,6 +3,8 @@ module Pwfmt
     # Helper module for creating test data to database.
     module DataHelper
       def load_default_data(lang = 'en')
+        Setting.default_language = lang
+        Setting.force_default_language_for_anonymous = '1'
         Redmine::DefaultData::Loader.load(lang)
       end
 
