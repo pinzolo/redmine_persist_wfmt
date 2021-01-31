@@ -28,7 +28,9 @@ module Pwfmt
       journal_pwfmts = PwfmtFormat.where(target_id: @journals.map(&:id), field: 'journal_notes')
       journal_formats = Hash[journal_pwfmts.map { |f| [f.target_id, f.format] }]
       @journals.each do |journal|
-        journal.notes.wiki_format = journal_formats[journal.id] if journal_formats[journal.id]
+        unless journal.notes.nil?
+          journal.notes.wiki_format = journal_formats[journal.id] if journal_formats[journal.id]
+        end   
       end
     end
   end
