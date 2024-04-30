@@ -47,7 +47,8 @@ if (window.pwfmt == null) {
     },
     isMarkdownSelected: function(toolbar) {
       var idx = toolbar.formatSelector.selectedIndex;
-      return toolbar.formatSelector.options[idx].value === 'markdown';
+      const markdownFormats = ['markdown', 'common_mark']
+      return markdownFormats.includes(toolbar.formatSelector.options[idx].value);
     }
   };
 }
